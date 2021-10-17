@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/fife/argos3/robotics-club/build/controllers/custom_footbot/custom_footbot_autogen/mocs_compilation.cpp
+
+/home/fife/argos3/robotics-club/controllers/custom_footbot/custom_footbot.cpp
+custom_footbot.h
+/home/fife/argos3/robotics-club/controllers/custom_footbot/custom_footbot.h
+argos3/core/utility/configuration/argos_configuration.h
+-
+argos3/core/utility/math/vector2.h
+-
+
+/home/fife/argos3/robotics-club/controllers/custom_footbot/custom_footbot.h
+argos3/core/control_interface/ci_controller.h
+-
+argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h
+-
+argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
+-
+
