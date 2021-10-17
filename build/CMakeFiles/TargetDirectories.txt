@@ -1,8 +1,0 @@
-/home/fife/argos3/robotics-club/build/CMakeFiles/rebuild_cache.dir
-/home/fife/argos3/robotics-club/build/CMakeFiles/edit_cache.dir
-/home/fife/argos3/robotics-club/build/controllers/CMakeFiles/rebuild_cache.dir
-/home/fife/argos3/robotics-club/build/controllers/CMakeFiles/edit_cache.dir
-/home/fife/argos3/robotics-club/build/controllers/custom_footbot/CMakeFiles/rebuild_cache.dir
-/home/fife/argos3/robotics-club/build/controllers/custom_footbot/CMakeFiles/edit_cache.dir
-/home/fife/argos3/robotics-club/build/controllers/custom_footbot/CMakeFiles/custom_footbot.dir
-/home/fife/argos3/robotics-club/build/controllers/custom_footbot/CMakeFiles/custom_footbot_autogen.dir
