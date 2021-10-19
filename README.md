@@ -17,7 +17,7 @@ https://www.argos-sim.info/core.php
 
     $ cd /PATH/MSU-Robotics-Club
 
-    (remember that "PATH" denotes the upper path of your file structure....dont actually type "PATH")
+    (remember that "PATH" denotes the upper path of the file's location....dont actually type "PATH")
 
 3. Create a new directory and name it "build"
 
