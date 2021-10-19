@@ -1,6 +1,15 @@
-# Quick Start 
+# About this repository
 
-## First Time Setup
+The purpose of this repository is to keep track of the current working robotics experiments and ARGoS configurations of the MSU-Robotics Club. 
+It also serves as a collaboration homebase for the software and hardware teams as projects expand beyond simulation. 
+
+## Simulation TO-DO:
+    -Get ARGoS running on as many computers as possible. Bootable USBs?
+
+## Quick Start with ARGoS 
+
+The following steps assume that you have already installed ARGoS on your system as described here:
+https://www.argos-sim.info/core.php
 
 1. Download the repository and unpack it in a memorable directory. 
 
@@ -39,3 +48,6 @@
     If you want to lanch an experiment on its own without the editor, you can type:
 
     $ argos3 -c experiments/diffusion_1.argos
+    
+
+
