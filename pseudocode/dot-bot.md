@@ -20,4 +20,4 @@ Spreading out:
         -The average arc length of the nodes is greater than some arbitrary threshold
         or
         -Resource deposit is located
-    3. Regroup and Redistribute or  
+    3. Regroup and Redistribute based on the conditions in Step 2
