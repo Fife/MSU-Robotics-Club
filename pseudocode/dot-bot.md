@@ -25,21 +25,21 @@ Spreading out:
 
 Bot Setup Pseudo code
 
-1. Declare size of swarm
-2. Spawn in home
-3. Calculate x&y coordinates
-4. Assign starting points to swarm
-5. move swarm to starting points
-6. Send ready message
+    1. Declare size of swarm
+    2. Spawn in home
+    3. Calculate x&y coordinates
+    4. Assign starting points to swarm
+    5. move swarm to starting points
+    6. Send ready message
 
 FORMULA FOR COORDINATES
 
-X=sin(n/numbots*Π/2)
-Y=cos(n/numbots*Π/2)
+X=cos(n/numbots*Π/2)
+Y=sin(n/numbots*Π/2)
+
 
 
 FORMULA FOR ANGLES
-
 
 θ= 90/1+n = Angle between each bot
 
