@@ -35,8 +35,8 @@ Bot Setup Pseudo code
 FORMULA FOR COORDINATES
 
 X=cos(n/numbots*Π/2)
-Y=sin(n/numbots*Π/2)
 
+Y=sin(n/numbots*Π/2)
 
 
 FORMULA FOR ANGLES
