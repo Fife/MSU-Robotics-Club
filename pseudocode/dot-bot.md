@@ -43,6 +43,19 @@ Overall process:
         -Resource deposit is located
         
     3. Regroup and Redistribute based on the conditions in Step 2
+    
+    
+     BIDIRECTION PLANE DISTRIBUTION STEPS
+     
+     1. FORWARD UNTIL THRESHOLD AWAY FROM WALL
+     2. TURN 90 DEGREES
+     3. FORWARD 2 THRESHOLDS
+     4. TURN 90 DEGREES
+     5. FORWARD UNTIL THRESHOLD AWAY FROM WALL
+     6. TURN 90 DEGREES(OTHER DIRECTION)
+     
+     N.B.
+     OUR NODE HAS 1 METER RADIUS
 
 
 
