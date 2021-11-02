@@ -55,7 +55,7 @@ Overall process:
      6. TURN 90 DEGREES(OTHER DIRECTION)
      
      N.B.
-     OUR NODE HAS 1 METER RADIUS
+     OUR NODE HAS A 1 METER RADIUS
 
 
 
