@@ -11,7 +11,8 @@ It also serves as a collaboration homebase for the software and hardware teams a
  
 ## NASA TODOs before December 13th
 
-    - GPR Module Proof of Life 
+    - More GPR/Topographical research
+    - GPR Module Proof of Life
     - Simple solidworks model exported into ARGoS framework (perhaps a cube?)
     - Simplistic swarm control behavior (3-4 robots working together to map an area)
     - Data Output Sample
