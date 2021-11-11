@@ -9,6 +9,14 @@ It also serves as a collaboration homebase for the software and hardware teams a
     -Play with Lua scripting to control the robots in the experiment. 
     -Explore pseudocode for detecting spots on the floor and converging on them using footbot. 
  
+## NASA TODOs before December 13th
+
+    - GPR Module Proof of Life 
+    - Simple solidworks model exported into ARGoS framework (perhaps a cube?)
+    - Simplistic swarm control behavior (3-4 robots working together to map an area)
+    - Data Output Sample
+    - Preliminary Design Document 
+    
 ## Quick Start with ARGoS 
 
 The following steps assume that you have already installed ARGoS on your system as described here:
