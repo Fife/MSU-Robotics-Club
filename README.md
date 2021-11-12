@@ -63,5 +63,6 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
 
     $ argos3 -c experiments/diffusion_1.argos
     
+    Note that "diffusion_1.argos" can be replaced with any .argos file that has been included and compiled in the directory. 
 
 
