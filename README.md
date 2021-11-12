@@ -2,12 +2,6 @@
 
 The purpose of this repository is to keep track of the current working robotics experiments and ARGoS configurations of the MSU-Robotics Club. 
 It also serves as a collaboration homebase for the software and hardware teams as projects expand beyond simulation. 
-
-## Systems Team TO-DO:
-    -Get ARGoS running on as many computers as possible. Bootable USBs?
-    -Play with the XML configuration to get familiar with setting up the ARGoS experiment.
-    -Play with Lua scripting to control the robots in the experiment. 
-    -Explore pseudocode for detecting spots on the floor and converging on them using footbot. 
  
 ## NASA TODOs before December 13th
 
