@@ -3,6 +3,7 @@
 
 -- Use Ctrl + Click (Cmd + Click on Mac) to move a selected robot to a different location
 
+--This is an example of using a LUA script to control a robot swarm inside the ARGoS simulator. 
 
 
 -- Put your global variables here
