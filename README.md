@@ -5,10 +5,13 @@ It also serves as a collaboration homebase for the software and hardware teams a
  
 ## NASA TODOs before December 13th
 
-    - More GPR/Topographical research
-    - GPR Module Proof of Life
+    - GPR Plugin Design + Implementation
+    - Preliminary Rover Design
+    - Figure out object importing workflow in ARGoS 
+    - Create ARGoS Prototype Rover Entity
     - Simple solidworks model exported into ARGoS framework (perhaps a cube?)
     - Simplistic swarm control behavior (3-4 robots working together to map an area)
+    - Output Data Processing Workflow
     - Data Output Sample
     - Preliminary Design Document 
     
