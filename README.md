@@ -58,7 +58,7 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
 
     If you want to lanch an experiment on its own without the editor, you can type:
 
-    $ argos3 -c experiments/diffusion_1.argos
+    $ argos3 -c experiments/custom_experiment.argos
     
     Note that "diffusion_1.argos" can be replaced with any .argos file that has been included and compiled in the directory. 
 
