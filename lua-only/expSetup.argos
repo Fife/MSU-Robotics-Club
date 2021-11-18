@@ -34,28 +34,28 @@
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-  <arena size="10, 10, 2" center="0,0,0.5">
+  <arena size="2, 2, 2" center="0,0,0.5">
 
 
     <floor id="f" source="image" path="./lua-only/one_spot.png" />
 
-    <box id="bn" size="0.1, 10, 0.2" movable="false">
-      <body position="5,0,0"  orientation="0,0,0" />
+    <box id="bn" size="0.1, 2, 0.2" movable="false">
+      <body position="1,0,0"  orientation="0,0,0" />
     </box>
-    <box id="bs" size="0.1, 10, 0.2" movable="false">
-      <body position="-5,0,0" orientation="0,0,0" />
+    <box id="bs" size="0.1, 2, 0.2" movable="false">
+      <body position="-1,0,0" orientation="0,0,0" />
     </box>
-    <box id="be" size="10, 0.1, 0.2" movable="false">
-      <body position="0,-5,0" orientation="0,0,0" />
+    <box id="be" size="2, 0.1, 0.2" movable="false">
+      <body position="0,-1,0" orientation="0,0,0" />
     </box>
-    <box id="bw" size="10, 0.1, 0.2" movable="false">
-      <body position="0,5,0" orientation="0,0,0" />
+    <box id="bw" size="2, 0.1, 0.2" movable="false">
+      <body position="0,1,0" orientation="0,0,0" />
     </box>
 
     <distribute>
-      <position method="uniform" min="-5,-5,0" max="-4.5,-4.5,0" />
-      <orientation method="uniform" min="0,0,0" max="360,0,0" />
-      <entity quantity="10" max_trials="100">
+      <position method="uniform" min="-1,-1,0" max="-0.5,-.5,0" />
+      <orientation method="uniform" min="0,0,0" max="0,0,0" />
+      <entity quantity="1" max_trials="100">
         <foot-bot id="fb1">
           <controller config="lua1" />
         </foot-bot>
