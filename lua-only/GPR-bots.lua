@@ -1,3 +1,4 @@
+
 -- Use Shift + Click to select a robot
 -- When a robot is selected, its variables appear in this editor
 
@@ -38,7 +39,9 @@ function step()
 	delta_y = robot.positioning.position.y - last_y;
 
 	log("x accumulator:" .. x_acc )
-	log("zrot" .. robot.positioning.orientation.z)
+	
+	
+	log("zrot" .. math.deg(math.asin(robot.positioning.orientation.z)*2))
 	last_x = robot.positioning.position.x;
 	last_y = robot.positioning.position.y;
 	x_acc = x_acc + delta_x;
