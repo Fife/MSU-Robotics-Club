@@ -20,7 +20,7 @@ function driveTo(x,y)
 
 	--convert quarternion to z rotation
 	local current_angle=math.asin(robot.positioning.orientation.z)*2
-	
+	--log(math.deg(current_angle))
 	--create cartesian face vector 
 	local face_vector_cart = {math.cos(current_angle), math.sin(current_angle)}
 	
@@ -38,29 +38,31 @@ function driveTo(x,y)
 	--log("Angle :" .. a)
 	--log("Cross Product:" .. cross_p)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
-	local speed_ratio = 7.5 
+	local speed_ratio = 10 
 	if cross_p < -0.005 and a > 1 then
-		turnLeft(speed_ratio)
+		turnLeft(speed_ratio/2)
 	
 	elseif cross_p > 0.005 and a > 1 then 
-		turnRight(speed_ratio)
+		turnRight(speed_ratio/2)
 	
-	else
-		if a > 1 then
-			robot.wheels.set_velocity(0, speed_ratio) 
-		else 
-			robot.wheels.set_velocity(speed_ratio, speed_ratio)  
+	elseif cross_p < 0.005 and cross_p > -0.005 then
+		if a < 0 then 
+			a = a * -1
 		end
-	
+		if a < 2 then
+				robot.wheels.set_velocity(speed_ratio*2, speed_ratio*2)			
+		else   
+			robot.wheels.set_velocity(speed_ratio, 0)
+		end
 	end
 end
 
 function turnLeft(speed)
-	robot.wheels.set_velocity(speed/10, speed)
+	robot.wheels.set_velocity(0, speed)
 end
 
 function turnRight(speed)
-	robot.wheels.set_velocity(speed, speed/10)
+	robot.wheels.set_velocity(speed, 0)
 end
 
 function tablelength(T)
@@ -72,7 +74,7 @@ end
 -- Put your global variables here
 
 local target = 1
-local point_list = {{0,0},{-0.5,0.35},{-0.35,0.3},{0.25,-0.3},{0.3,-0.25}}
+local point_list = {{0.5,-0.5},{0.5,0},{-0.5,0},{-0.5,0.5},{0.5,0.5},{0.5,-0.5},{0,-0.5},{0,0.5},{-0.5,0.5}, -0.5,-0.5}
 local current_target = point_list[target]
 local table_length = tablelength(point_list)
 
@@ -96,7 +98,7 @@ function step()
 	local sum_of_squares=math.pow((current_target[1] - current_x),2)				              +math.pow((current_target[2] - current_y),2)
 
 	local traj_magnitude=math.sqrt(sum_of_squares)
-	if (traj_magnitude > .06) then
+	if (traj_magnitude > .09) then
 		driveTo(current_target[1],current_target[2])
 	else
 		if target + 1 > table_length then
