@@ -14,6 +14,7 @@ function driveTo(x,y)
 	current_angle=math.deg(math.asin(robot.positioning.orientation.z)*2)
 	
 	--create unit vector for the face direction
+	--convert polar face vector to cartesian vector
 	
 	--Cross product of trajectory vector with face direction vector
 	--T x F
