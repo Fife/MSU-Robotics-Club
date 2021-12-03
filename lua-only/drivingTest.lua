@@ -35,20 +35,19 @@ function driveTo(x,y)
 	local dot_p = face_vector_cart[1]*traj_vector_cart[1] + face_vector_cart[2]*traj_vector_cart[2]
 	local a = (math.acos(dot_p/traj_magnitude) * 180) / math.pi
 	
-	log(a)
-	log(cross_p)
+	--log("Angle :" .. a)
+	--log("Cross Product:" .. cross_p)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
-	local speed_ratio = 15 
-	if cross_p < -0.05 then
+	local speed_ratio = 7.5 
+	if cross_p < -0.005 and a > 1 then
 		turnLeft(speed_ratio)
 	
-	elseif cross_p > 0.05 then 
+	elseif cross_p > 0.005 and a > 1 then 
 		turnRight(speed_ratio)
 	
 	else
-		log(a)
 		if a > 1 then
-			turnLeft(speed_ratio)
+			robot.wheels.set_velocity(0, speed_ratio) 
 		else 
 			robot.wheels.set_velocity(speed_ratio, speed_ratio)  
 		end
@@ -57,25 +56,36 @@ function driveTo(x,y)
 end
 
 function turnLeft(speed)
-	robot.wheels.set_velocity(speed/2, speed)
+	robot.wheels.set_velocity(speed/10, speed)
 end
 
 function turnRight(speed)
-	robot.wheels.set_velocity(speed, speed/2)
+	robot.wheels.set_velocity(speed, speed/10)
 end
 
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
+end
 
 -- Put your global variables here
 
+local target = 1
+local point_list = {{0,0},{-0.5,0.35},{-0.35,0.3},{0.25,-0.3},{0.3,-0.25}}
+local current_target = point_list[target]
+local table_length = tablelength(point_list)
 
 
 --[[ This function is executed every time you press the 'execute' button ]]
 function init()
    -- put your code here
+
+	log("Current Target X :".. current_target[1])
+	log("Current Target Y :".. current_target[2])
 	
 	robot.wheels.set_velocity(5,5)
 end
-
 
 
 --[[ This function is executed at each time step
@@ -83,15 +93,24 @@ end
 function step()
 	local current_x= robot.positioning.position.x
 	local current_y= robot.positioning.position.y
-	local sum_of_squares=math.pow((0 - current_x),2)+math.pow((0 - current_y),2)
+	local sum_of_squares=math.pow((current_target[1] - current_x),2)				              +math.pow((current_target[2] - current_y),2)
+
 	local traj_magnitude=math.sqrt(sum_of_squares)
-	if (traj_magnitude > 0.05) then
-		driveTo(0,0)
-	elseif flag == false then
-		robot.wheels.set_velocity(0,0)
-		log("Current X:" .. current_x)
-		log("Current Y:" .. current_y)
-		flag = true
+	if (traj_magnitude > .06) then
+		driveTo(current_target[1],current_target[2])
+	else
+		if target + 1 > table_length then
+			log("All Points Passed Through")
+			robot.leds.set_all_colors(0,255,0)
+			robot.wheels.set_velocity(0,0)
+		else
+			target = target+1
+			current_target = point_list[target]
+			log("Position Changed X :".. current_x)
+			log("Position Changed Y :".. current_y)
+			log("Current Target X :".. current_target[1])
+			log("Current Target Y :".. current_target[2])
+		end
 	end
    -- put your code here
 end
@@ -104,6 +123,9 @@ end
      called. The state of sensors and actuators is reset
      automatically by ARGoS. ]]
 function reset()
+	target = 1
+	current_target = point_list[target]
+
    -- put your code here
 end
 
