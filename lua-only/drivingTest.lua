@@ -20,8 +20,9 @@ function driveTo(x,y)
 
 	--convert quarternion to z rotation
 	local current_angle=math.asin(robot.positioning.orientation.z)*2
-	--log(math.deg(current_angle))
+
 	--create cartesian face vector 
+
 	local face_vector_cart = {math.cos(current_angle), math.sin(current_angle)}
 	
 	--Cross product of trajectory vector with face direction vector
@@ -33,26 +34,25 @@ function driveTo(x,y)
 	--acos(F*T/|T|)
 	--This angle will always be between 0-180
 	local dot_p = face_vector_cart[1]*traj_vector_cart[1] + face_vector_cart[2]*traj_vector_cart[2]
-	local a = (math.acos(dot_p/traj_magnitude) * 180) / math.pi
+	local a = math.deg((math.acos(dot_p/traj_magnitude)))
 	
-	--log("Angle :" .. a)
-	--log("Cross Product:" .. cross_p)
+	
+
+	log("Angle between :" .. a)
+	log("Cross Product:" .. cross_p)
+	log("Face Angle " .. math.deg(current_angle))
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
 	local speed_ratio = 10 
-	if cross_p < -0.005 and a > 1 then
+	
+	if cross_p < -0.005 then
 		turnLeft(speed_ratio/2)
 	
-	elseif cross_p > 0.005 and a > 1 then 
+	elseif cross_p > 0.005 then 
 		turnRight(speed_ratio/2)
 	
 	elseif cross_p < 0.005 and cross_p > -0.005 then
-		if a < 0 then 
-			a = a * -1
-		end
 		if a < 2 then
 				robot.wheels.set_velocity(speed_ratio*2, speed_ratio*2)			
-		else   
-			robot.wheels.set_velocity(speed_ratio, 0)
 		end
 	end
 end
@@ -98,7 +98,7 @@ function step()
 	local sum_of_squares=math.pow((current_target[1] - current_x),2)				              +math.pow((current_target[2] - current_y),2)
 
 	local traj_magnitude=math.sqrt(sum_of_squares)
-	if (traj_magnitude > .09) then
+	if (traj_magnitude > .125) then
 		driveTo(current_target[1],current_target[2])
 	else
 		if target + 1 > table_length then
