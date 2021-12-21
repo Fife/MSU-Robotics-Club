@@ -52,9 +52,9 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
     
     Note that "diffusion_1.argos" can be replaced with any .argos file that has been included and compiled in the directory. 
 
-    There is also a script in the MSU-Robotics-Club directory that can be used to launch argos with the lua editor in a default prohject. It can be accessed by typing
+There is also a script in the MSU-Robotics-Club directory that can be used to launch argos with the lua editor in a default prohject. It can be accessed by typing
 
     $ ./start-argos.sh
 
-    While in the MSU-Robotics Club directory
+    while in the MSU-Robotics Club directory. 
 
