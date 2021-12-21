@@ -54,7 +54,7 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
 
 There is also a script in the MSU-Robotics-Club directory that can be used to launch argos with the lua editor in a default prohject. It can be accessed by typing
 
-    $ ./start-argos.sh
+   $ ./start-argos.sh
 
-    while in the MSU-Robotics Club directory. 
+   while in the MSU-Robotics Club directory. 
 
