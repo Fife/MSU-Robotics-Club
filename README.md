@@ -2,18 +2,6 @@
 
 The purpose of this repository is to keep track of the current working robotics experiments and ARGoS configurations of the MSU-Robotics Club. 
 It also serves as a collaboration homebase for the software and hardware teams as projects expand beyond simulation. 
- 
-## NASA TODOs before December 13th
-
-    - GPR Plugin Design + Implementation
-    - Preliminary Rover Design
-    - Figure out object importing workflow in ARGoS 
-    - Create ARGoS Prototype Rover Entity
-    - Simple solidworks model exported into ARGoS framework (perhaps a cube?)
-    - Simplistic swarm control behavior (3-4 robots working together to map an area)
-    - Output Data Processing Workflow
-    - Data Output Sample
-    - Preliminary Design Document 
     
 ## Quick Start with ARGoS 
 
@@ -52,6 +40,8 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
 
 7. If you get no errors then you can navigate back up to the MSU-Robotics-Club directory to launch ARGoS.
     
+    $ cd ..
+    
     If you want to launch ARGoS with the Lua editor you can type:
 
     $ argos3 -c lua-only/expSetup.argos
@@ -62,4 +52,9 @@ Note: If you are booting from the Live USB that you got from the club meeting, y
     
     Note that "diffusion_1.argos" can be replaced with any .argos file that has been included and compiled in the directory. 
 
+    There is also a script in the MSU-Robotics-Club directory that can be used to launch argos with the lua editor in a default prohject. It can be accessed by typing
+
+    $ ./start-argos.sh
+
+    While in the MSU-Robotics Club directory
 
