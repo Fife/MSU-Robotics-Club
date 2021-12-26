@@ -11,4 +11,6 @@ def getArenaSize(root):
 size=getArenaSize(root)
 gprDomain='#domain ' + size.replace(',','')
 
-print(gprDomain)
+success = open("gprDomain.txt", "w")
+success.write(gprDomain)
+success.close()
