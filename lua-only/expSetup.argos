@@ -34,7 +34,7 @@
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-  <arena size="2, 2, 2" center="0,0,-1">
+  <arena size="1000, 1000, 10" center="0,0,-1">
       <floor id="f" source="image" path="./lua-only/MoonSurface.png" />
       
    <foot-bot id="fb1">
