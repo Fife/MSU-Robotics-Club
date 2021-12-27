@@ -34,7 +34,7 @@
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-  <arena size="1000, 1000, 10" center="0,0,-1">
+  <arena size="50, 50, 10" center="0,0,-1">
       <floor id="f" source="image" path="./lua-only/MoonSurface.png" />
       
    <foot-bot id="fb1">
@@ -79,7 +79,9 @@
   <visualization>
     <qt-opengl lua_editor="true">
       <camera>
-        <placement idx="0" position="-2.0767,0.015,2.74921" look_at="-1.59254,0.015,1.87423" lens_focal_length="20" />
+        <placements>
+          <placement index="0" position="0,0,100" look_at="0,0,0" up="1,0,0" lens_focal_length="65" />
+        </placements>
       </camera>
     </qt-opengl>
   </visualization>
