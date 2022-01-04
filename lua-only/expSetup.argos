@@ -54,6 +54,8 @@
     <box id="bw" size="50, 0.1, 0.2" movable="false">
       <body position="0,25,0" orientation="0,0,0" />
     </box>
+    <box id="obj1" size="1, 1, 1" movable ="false">
+      <body position="-2,0,0" orientation="0,0,0" />
 
 
   </arena>
