@@ -42,16 +42,16 @@
       <controller config="lua1" />
     </foot-bot>
 
-    <box id="bn" size="0.1, 2, 0.2" movable="false">
+    <box id="bn" size="0.1, 50, 0.2" movable="false">
       <body position="1,0,0"  orientation="0,0,0" />
     </box>
-    <box id="bs" size="0.1, 2, 0.2" movable="false">
+    <box id="bs" size="0.1, 50, 0.2" movable="false">
       <body position="-1,0,0" orientation="0,0,0" />
     </box>
-    <box id="be" size="2, 0.1, 0.2" movable="false">
+    <box id="be" size="50, 0.1, 0.2" movable="false">
       <body position="0,-1,0" orientation="0,0,0" />
     </box>
-    <box id="bw" size="2, 0.1, 0.2" movable="false">
+    <box id="bw" size="50, 0.1, 0.2" movable="false">
       <body position="0,1,0" orientation="0,0,0" />
     </box>
 
