@@ -12,9 +12,9 @@
   <!-- *************** -->
   <!-- * Controllers * -->
   <!-- *************** -->
-  <controllers>
+ <controllers>
 
-    <lua_controller id="lua1">
+    <!-- <lua_controller id="lua1">
       <actuators>
         <differential_steering implementation="default" />
         <leds implementation="default" medium="leds" />
@@ -27,9 +27,9 @@
         <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
       </sensors>
       <params/>
-    </lua_controller>
+    </lua_controller> -->
 
-  </controllers>
+  </controllers> 
 
   <!-- *********************** -->
   <!-- * Arena configuration * -->
@@ -64,7 +64,11 @@
   <!-- * Physics engines * -->
   <!-- ******************* -->
   <physics_engines>
-    <dynamics2d id="dyn3d" />
+
+    <dynamics3d id = "dyn3d">
+    	<gravity g= "10"/>
+    </dynamics3d>
+    
   </physics_engines>
 
   <!-- ********* -->
