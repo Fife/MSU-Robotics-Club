@@ -41,8 +41,6 @@
 
     <box id="bn" size="0.1, 2, 0.2" movable="false">
       <body position="1,0,0"  orientation="0,0,0" />
-@@ -52,15 +55,6 @@
-      <body position="0,1,0" orientation="0,0,0" />
     </box>
 
     <distribute>
