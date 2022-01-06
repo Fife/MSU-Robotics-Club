@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<argos-configuration>
+  <!-- ************************* -->
+  <!-- * General configuration * -->
+  <!-- ************************* -->
+  <framework>
+    <experiment length="0" ticks_per_second="24" />
+    <system threads="0" />
+  </framework>
+  <!-- *************** -->
+  <!-- * Controllers * -->
+  <!-- *************** -->
+  <controllers>
+    <lua_controller id="lua1">
+      <actuators>
+        <differential_steering implementation="default" />
+        <leds implementation="default" medium="leds" />
+      </actuators>
+      <sensors>
+        <differential_steering implementation="default" />
+        <footbot_motor_ground implementation="rot_z_only" />
+        <positioning implementation = "default"/>
+        <footbot_proximity implementation="default" show_rays="false" />
+        <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
+      </sensors>
+      <params/>
+    </lua_controller>
+  </controllers>
+  <!-- *********************** -->
+  <!-- * Arena configuration * -->
+  <!-- *********************** -->
+  <arena size="2, 2, 2" center="0,0,0.5">
+
+
+    <floor id="f" source="image" path="./lua-only/one_spot.png" />
+
+   <foot-bot id="fb1">
+      <body position="-0.5,-0.5,0" orientation="0,0,0" />
+      <controller config="lua1" />
+    </foot-bot>
+
+    <box id="bn" size="0.1, 2, 0.2" movable="false">
+      <body position="1,0,0"  orientation="0,0,0" />
+@@ -52,15 +55,6 @@
+      <body position="0,1,0" orientation="0,0,0" />
+    </box>
+
+    <distribute>
+      <position method="uniform" min="-1,-1,0" max="-0.5,-.5,0" />
+      <orientation method="uniform" min="0,0,0" max="0,0,0" />
+      <entity quantity="1" max_trials="100">
+        <foot-bot id="fb1">
+          <controller config="lua1" />
+        </foot-bot>
+      </entity>
+    </distribute>
+
+  </arena>
+
+  <!-- ******************* -->
+  <!-- * Physics engines * -->
+  <!-- ******************* -->
+  <physics_engines>
+    <dynamics2d id="dyn3d" />
+  </physics_engines>
+  <!-- ********* -->
+  <!-- * Media * -->
+  <!-- ********* -->
+  <media>
+    <led id="leds" />
+  </media>
+  <!-- ****************** -->
+  <!-- * Visualization * -->
+  <!-- ****************** -->
+  <visualization>
+    <qt-opengl lua_editor="true">
+      <camera>
+        <placement idx="0" position="-2.0767,0.015,2.74921" look_at="-1.59254,0.015,1.87423" lens_focal_length="20" />
+      </camera>
+    </qt-opengl>
+  </visualization>
+</argos-configuration>
