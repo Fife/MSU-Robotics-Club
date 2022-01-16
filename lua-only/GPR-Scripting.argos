@@ -5,34 +5,32 @@
 <framework>
 	<experiment length ="0"
 		    ticks_per_second="24"
-                    random_seed= "0"/>
+        random_seed= "0"/>
 </framework>
 
+<controllers>
+  <lua_controller id="example_controller">
+    <actuators>
+      <joints implementation="default">
+        <joint id="base_wheel_fr" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_fl" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_br" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_bl" mode="velocity" max_impulse="0.005f"/>
+      </joints>
+      <leds implementation= "default" medium="leds"/>
+    </actuators>
 
-  <controllers>
-    <lua_controller id="example_controller">
-      <actuators>
-        <joints implementation="default">
-          <joint id="base_wheel_fr" mode="velocity" max_impulse="0.005f"/>
-          <joint id="base_wheel_fl" mode="velocity" max_impulse="0.005f"/>
-          <joint id="base_wheel_br" mode="velocity" max_impulse="0.005f"/>
-          <joint id="base_wheel_bl" mode="velocity" max_impulse="0.005f"/>
-        </joints>
-        <leds implementation= "default" medium="leds"/>
-      </actuators>
-
-      <sensors>
-        <joints implementation="default">
-          <joint id="base_wheel_fr" mode="velocity"/>
-          <joint id="base_wheel_fl" mode="velocity"/>
-          <joint id="base_wheel_br" mode="velocity"/>
-          <joint id="base_wheel_bl" mode="velocity"/>
-        </joints>
-      </sensors>
-      <params/>
-    </lua_controller>
-  </controllers>
-
+    <sensors>
+      <joints implementation="default">
+        <joint id="base_wheel_fr" mode="velocity"/>
+        <joint id="base_wheel_fl" mode="velocity"/>
+        <joint id="base_wheel_br" mode="velocity"/>
+        <joint id="base_wheel_bl" mode="velocity"/>
+      </joints>
+    </sensors>
+    <params/>
+  </lua_controller>
+</controllers>
 
 
 
