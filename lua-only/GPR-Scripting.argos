@@ -33,13 +33,24 @@
       </sensors>
       <params/>
     </lua_controller>
+    <custom_footbot 
+		id="fdc"
+		library="build/controllers/custom_footbot/libcustom_footbot">
+	<actuators>
+		<differential_steering implementation="default"/>
+	</actuators>
+	<sensors>
+		<footbot_proximity implementation = "default" show_rays="true"/>
+	</sensors>
+	<params alpha="0.9" delta="0.8" velocity="23" />
+	</custom_footbot>
   </controllers>
   
 
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-  <arena size="2, 2, 2" center="0,0,0.5">
+  <arena size="2, 2, 2" center="0,0,0.5" positional_grid_size="1, 1, 1">
 
     <floor id="f" source="image" path="./lua-only/one_spot.png" />
 
