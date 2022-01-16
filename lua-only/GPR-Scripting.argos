@@ -15,22 +15,22 @@
 
 
 
-<arena size="2, 2, 2" center="0,0,-1" positional_grid_size="1, 1, 1">
+<arena size="1, 1,1" center="0,0,-0.5" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
            path="textures/moon_texture.png" />
 
-  <box id="wall_north" size="0.2,0.1,0.3" movable="false">
-    <body position="0,1,0" orientation="0,0,0" />
+  <box id="wall_north" size="1,0.1,0.3" movable="false">
+    <body position="0,0.5,0" orientation="0,0,0" />
   </box>
-  <box id="wall_south" size="0.2,0.1,0.3" movable="false">
-    <body position="0,-1,0" orientation="0,0,0" />
+  <box id="wall_south" size="1,0.1,0.3" movable="false">
+    <body position="0,-0.5,0" orientation="0,0,0" />
   </box>
-  <box id="wall_east" size="0.1,0.2,0.3" movable="false">
-    <body position="1,0,0" orientation="0,0,0" />
+  <box id="wall_east" size="0.1,1,0.3" movable="false">
+    <body position="0.5,0,0" orientation="0,0,0" />
   </box>
-  <box id="wall_west" size="0.1,0.2,0.3" movable="false">
-    <body position="-1,0,0" orientation="0,0,0" />
+  <box id="wall_west" size="0.1,1,0.3" movable="false">
+    <body position="-0.5,0,0" orientation="0,0,0" />
   </box>
 
   <prototype id="example_vehicle" movable="true">
