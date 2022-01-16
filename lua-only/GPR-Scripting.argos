@@ -71,23 +71,23 @@
 
       <joints>
         <joint id="base_wheel_fr" type="revolute" axis="0,0,1">
-        <parentlink="base" position=".025,-.025,.01" orientation="0,0,90"/>
-        <childlink="wheel_fr" position="0,0,0" orientation="0,0,0"/>
+        <parent link="base" position=".025,-.025,.01" orientation="0,0,90"/>
+        <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
         </joint>
 
         <joint id="base_wheel_fl" type="revolute" axis="0,0,1">
-        <parentlink="base" position=".025,.025,.01" orientation="0,0,-90"/>
-        <childlink="wheel_fl" position="0,0,0" orientation="0,0,0"/>
+        <parent link="base" position=".025,.025,.01" orientation="0,0,-90"/>
+        <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
         </joint>
 
         <joint id="base_wheel_br" type="revolute" axis="0,0,1">
-        <parentlink="base" position="-.025,-.025,.01" orientation="0,0,90"/>
-        <childlink="wheel_br" position="0,0,0" orientation="0,0,0"/>
+        <parent link="base" position="-.025,-.025,.01" orientation="0,0,90"/>
+        <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
         </joint>
 
         <joint id="base_wheel_bl" type="revolute" axis="0,0,1">
-        <parentlink="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
-        <childlink="wheel_bl" position="0,0,0" orientation="0,0,0"/>
+        <parent link="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
+        <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
         </joint>
 
       </joints>
