@@ -36,42 +36,6 @@
   <!-- ***************************-->
   <!-- * Prototype configuration *-->
   <!-- ***************************-->
-
-<prototype id="example_vehicle" movable="true">
-  <body position = "0,0,0" orientation = "0,0,0"/>
-
-  <links>
-    <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
-    <link id="wheel_fl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,.025,0.02" orientation="0,0,-90"/>
-    <link id="wheel_fr" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,-.025,0.02" orientation="0,0,90"/>
-    <link id="wheel_br" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,-.025,0.02" orientation="0,0,90"/>
-    <link id="wheel_bl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,.025,0.02" orientation="0,0,-90"/>
-  </links>
-
-  <joints>
-    <joint id="base_wheel_fr" type="revolute" axis="0,0,1">
-    <parentlink="base" position=".025,-.025,.01" orientation="0,0,90"/>
-    <childlink="wheel_fr" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-
-    <joint id="base_wheel_fl" type="revolute" axis="0,0,1">
-    <parentlink="base" position=".025,.025,.01" orientation="0,0,-90"/>
-    <childlink="wheel_fl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-
-    <joint id="base_wheel_br" type="revolute" axis="0,0,1">
-    <parentlink="base" position="-.025,-.025,.01" orientation="0,0,90"/>
-    <childlink="wheel_br" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-
-    <joint id="base_wheel_bl" type="revolute" axis="0,0,1">
-    <parentlink="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
-    <childlink="wheel_bl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-
-  </joints>
-</prototype>
-
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
@@ -94,6 +58,42 @@
     <box id="west_wall" size="0.1, 2, 0.2" movable="false">
       <body position="0,-1,0"  orientation="0,0,0" />
     </box>
+
+
+    <prototype id="example_vehicle" movable="true">
+      <body position = "0,0,0" orientation = "0,0,0"/>
+
+      <links>
+        <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
+        <link id="wheel_fl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,.025,0.02" orientation="0,0,-90"/>
+        <link id="wheel_fr" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,-.025,0.02" orientation="0,0,90"/>
+        <link id="wheel_br" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,-.025,0.02" orientation="0,0,90"/>
+        <link id="wheel_bl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,.025,0.02" orientation="0,0,-90"/>
+      </links>
+
+      <joints>
+        <joint id="base_wheel_fr" type="revolute" axis="0,0,1">
+        <parentlink="base" position=".025,-.025,.01" orientation="0,0,90"/>
+        <childlink="wheel_fr" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_fl" type="revolute" axis="0,0,1">
+        <parentlink="base" position=".025,.025,.01" orientation="0,0,-90"/>
+        <childlink="wheel_fl" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_br" type="revolute" axis="0,0,1">
+        <parentlink="base" position="-.025,-.025,.01" orientation="0,0,90"/>
+        <childlink="wheel_br" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_bl" type="revolute" axis="0,0,1">
+        <parentlink="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
+        <childlink="wheel_bl" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+      </joints>
+    </prototype>
 
   </arena>
 
