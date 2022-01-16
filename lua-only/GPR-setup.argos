@@ -9,19 +9,7 @@
 </framework>
 
 
-
 <controllers>
-	<custom_footbot 
-		id="fdc"
-		library="build/controllers/custom_footbot/libcustom_footbot">
-	<actuators>
-		<differential_steering implementation="default"/>
-	</actuators>
-	<sensors>
-		<footbot_proximity implementation = "default" show_rays="true"/>
-	</sensors>
-	<params alpha="0.9" delta="0.8" velocity="23" />
-	</custom_footbot>
 </controllers>
 
 
