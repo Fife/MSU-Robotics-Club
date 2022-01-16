@@ -98,9 +98,13 @@
   <!-- ******************* -->
   <!-- * Physics engines * -->
   <!-- ******************* -->
-  <physics_engines>
-    <dynamics2d id="dyn3d" />
-  </physics_engines>
+<physics_engines>
+<dynamics3d id="dyn3d" iterations="20">
+    <floor height="0.01"/>
+    <gravity g="9.8"/>
+    <magnetism max_distance="0.1"/>
+  </dynamics3d>
+</physics_engines>
   <!-- ********* -->
   <!-- * Media * -->
   <!-- ********* -->
