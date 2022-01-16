@@ -34,24 +34,21 @@
 
     <floor id="f" source="image" path="./lua-only/one_spot.png" />
 
-   <foot-bot id="fb1">
-      <body position="-0.5,-0.5,0" orientation="0,0,0" />
-      <controller config="lua1" />
-    </foot-bot>
-
-    <box id="bn" size="0.1, 2, 0.2" movable="false">
+    <box id="north_wall" size="0.1, 2, 0.2" movable="false">
       <body position="1,0,0"  orientation="0,0,0" />
     </box>
 
-    <distribute>
-      <position method="uniform" min="-1,-1,0" max="-0.5,-.5,0" />
-      <orientation method="uniform" min="0,0,0" max="0,0,0" />
-      <entity quantity="1" max_trials="100">
-        <foot-bot id="fb1">
-          <controller config="lua1" />
-        </foot-bot>
-      </entity>
-    </distribute>
+        <box id="south_wall" size="0.1, 2, 0.2" movable="false">
+      <body position="-1,0,0"  orientation="0,0,0" />
+    </box>
+
+    <box id="east_wall" size="0.1, 2, 0.2" movable="false">
+      <body position="0,1,0"  orientation="0,0,0" />
+    </box>
+
+    <box id="west_wall" size="0.1, 2, 0.2" movable="false">
+      <body position="0,-1,0"  orientation="0,0,0" />
+    </box>
 
   </arena>
 
