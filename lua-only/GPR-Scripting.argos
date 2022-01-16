@@ -20,6 +20,7 @@
           <joint id="base_wheel_br" mode="velocity" max_impulse="0.005f"/>
           <joint id="base_wheel_bl" mode="velocity" max_impulse="0.005f"/>
         </joints>
+        <leds implementation= "default" medium="leds"/>
       </actuators>
 
       <sensors>
@@ -45,7 +46,7 @@
       <body position="1,0,0"  orientation="0,0,0" />
     </box>
 
-        <box id="south_wall" size="0.1, 2, 0.2" movable="false">
+    <box id="south_wall" size="0.1, 2, 0.2" movable="false">
       <body position="-1,0,0"  orientation="0,0,0" />
     </box>
 
