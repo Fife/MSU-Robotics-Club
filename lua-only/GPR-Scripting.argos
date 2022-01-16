@@ -17,7 +17,6 @@
         <joint id="base_wheel_br" mode="velocity" max_impulse="0.005f"/>
         <joint id="base_wheel_bl" mode="velocity" max_impulse="0.005f"/>
       </joints>
-      <leds implementation= "default" medium="leds"/>
     </actuators>
 
     <sensors>
