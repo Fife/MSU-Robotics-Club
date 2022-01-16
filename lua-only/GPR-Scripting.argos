@@ -104,7 +104,6 @@
   <physics_engines>
 
     <dynamics3d id = "dyn3d">
-    	<gravity g= "10"/>
     </dynamics3d>
     
   </physics_engines>
