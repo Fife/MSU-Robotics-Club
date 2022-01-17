@@ -65,6 +65,12 @@
     <links ref = "base">
       <link id="base" geometry="box" size="0.05,0.05,0.05" mass="0.1" position="0,0,0" orientation="0,0,0"/>
     </links>
+    
+    <devices>
+      <leds>
+        <led medium="leds" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
+      </leds>
+    </devices>
 
   </prototype>
 
@@ -76,6 +82,12 @@
     <links ref = "base">
       <link id="base" geometry="box" size="0.05,0.05,0.05" mass="0.1" position="0,0,0" orientation="0,0,0"/>
     </links>
+
+    <devices>
+      <leds>
+        <led medium="leds" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
+      </leds>
+    </devices>
 
   </prototype>
 </arena>
@@ -91,7 +103,7 @@
 
   <!--Media Configuration-->
   <media>
-    <led/>
+    <leds/>
   </media>
 
   <!--Visualization Configuration-->
