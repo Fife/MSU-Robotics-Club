@@ -76,8 +76,8 @@
       <gpr_medium material_id="my_sand" dielectric_smoothing="true"/>
 
       <materials>
-        <material params="3, 0.01, 1, 0, my_sand"/>
-        <material params="1, 44.2e6, 1, 0, my_gold"/>
+        <material id="my_sand" params="3, 0.01, 1, 0"/>
+        <material id="my_gold" params="1, 44.2e6, 1, 0"/>
       </materials>
 
       <subsurface_resources>
@@ -88,7 +88,9 @@
   </physics_engines>
 
   <!--Media Configuration-->
-  <media />
+  <media>
+  
+  </media>
 
   <!--Visualization Configuration-->
 
