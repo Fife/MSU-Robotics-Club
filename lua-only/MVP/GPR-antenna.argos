@@ -49,7 +49,6 @@
     <body position="0,0,0", orientation="0,0,0"/>
   </box>
 
-
 <!--Antenna Prototype-->
   <prototype id="my_gpr_antenna" movable="true">
 
@@ -59,9 +58,8 @@
     <links ref = "base">
       <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
     </links>
-
+    
   </prototype>
-
 </arena>
 
   <!--Physics Engines Configuration-->
