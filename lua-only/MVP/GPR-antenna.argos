@@ -51,7 +51,7 @@
 
 
 <!--Antenna Prototype-->
-  <prototype id="GPR_box" movable="true">
+  <prototype id="my_gpr_antenna" movable="true">
 
     <body position = "0,0,0" orientation = "0,0,0"/>
     <controller config="GPR_antenna"/>
@@ -89,7 +89,7 @@
 
   <!--Media Configuration-->
   <media>
-  
+
   </media>
 
   <!--Visualization Configuration-->
