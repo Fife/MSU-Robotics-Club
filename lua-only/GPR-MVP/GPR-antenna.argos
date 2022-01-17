@@ -45,7 +45,7 @@
 
 <!--Subsurface Resources-->
 
-  <box id= "subsurface_gold" size="0.2,0.2,0.2", movable="false">
+  <box id= "subsurface_gold" size="0.2,0.2,0.2" movable="false">
     <body position="0,0,0", orientation="0,0,0"/>
   </box>
 
