@@ -45,7 +45,7 @@
 
 <!--Subsurface Resources-->
 
-  <box id= "subsurface_resource" size="0.2,0.2,0.2", movable="false">
+  <box id= "subsurface_gold" size="0.2,0.2,0.2", movable="false">
     <body position="0,0,0", orientation="0,0,0"/>
   </box>
 
@@ -70,6 +70,20 @@
 
     <dynamics3d id = "dyn3d">
     </dynamics3d>
+
+    <gprMax title="Antenna_Test">
+      <gpr_space domain="arena" dx_dy_dz="0.002, 0.002, 0.002" time_window="3e-9"/>
+      <gpr_medium material_id="my_sand" dielectric_smoothing="true"/>
+
+      <materials>
+        <material params="3, 0.01, 1, 0, my_sand"/>
+        <material params="1, 44.2e6, 1, 0, my_gold"/>
+      </materials>
+
+      <subsurface_resources>
+        <material argos_id="subsurface_gold" material_id="my_gold"/>
+      </subsurface_resources>
+    </gprMax>
 
   </physics_engines>
 
