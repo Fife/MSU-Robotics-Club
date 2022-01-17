@@ -27,7 +27,7 @@
 
 <!--Arena Configuration-->
 
-<arena size="1, 1,1.5" center="0,0,-0.25" positional_grid_size="1, 1, 1">
+<arena size="1,1,1.5" center="0,0,-0.25" positional_grid_size="1, 1, 1">
 
 <!--Arena Walls-->
 
@@ -115,21 +115,34 @@
   <!--
     The gpr_medium tag determines what material the subsurace objects are buried in. 
   -->
-  <gpr_medium material_id="my_sand" dielectric_smoothing="true"/>
+  <gpr_medium material_id="half_space" dielectric_smoothing="true"/>
 
   <!--
     The materials tag contains a list of user defined materials. 
   -->
   <materials>
+    <!--
+    Possible Future Materials
+
     <material id="my_sand" relative_permittivity="3" conductivity="0.01" relative_permeability="1" magnetic_loss="0"/>
     <material id="my_gold" relative_permittivity="1" conductivity="44.6e6" relative_permeability="1" magnetic_loss="0"/>
+    -->
+    <material id="half_space" relative_permittivity="6" conductivity="0" relative_permeability="1" magnetic_loss="0"/>
   </materials>
+
+  <!--
+    The waveform tag contains information about a user described waveform pattern. 
+  -->
+  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
+
+  <hertzian_dipole polarization="z" waveform="my_ricker" link_id="gpr_transmitter">
+  
 
   <!--
     The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
   -->
   <subsurface_resources>
-    <material argos_id="metal_cylinder" material_id="my_gold"/>
+    <material argos_id="metal_cylinder" material_id="pec"/>
   </subsurface_resources>
 
 </gprMax>
