@@ -28,9 +28,6 @@
 <!--Arena Configuration-->
 
 <arena size="1, 1,1.5" center="0,0,-0.25" positional_grid_size="1, 1, 1">
-    <floor id="floor"
-           source="image"
-           path="textures/moon_texture.png" />
 
 <!--Arena Walls-->
 
