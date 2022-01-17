@@ -18,6 +18,8 @@
     <actuators>
       <leds implementation="default" medium="leds"/>
     </actuators>
+    <sensors>
+    </sensors>
     <params/>
   </lua_controller>
 </controllers>
