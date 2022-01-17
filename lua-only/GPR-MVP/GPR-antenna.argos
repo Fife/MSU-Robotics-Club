@@ -34,10 +34,9 @@
 <!--Robots-->
 
 <!--Subsurface Resources-->
-
-  <box id= "subsurface_gold" size="0.1,0.1,0.1" movable="false">
-    <body position="0,0,-0.5" orientation="0,0,0"/>
-  </box>
+  <cylinder id="metal_cylinder" radius="0.01" height="0.2" movable="false">
+      <body position="0,0,-0.5" orientation="0,0,0" />
+  </cylinder>
 
 <!--Transmitter Prototype-->
   <prototype id="gpr_transmitter" movable="true">
@@ -130,7 +129,7 @@
     The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
   -->
   <subsurface_resources>
-    <material argos_id="subsurface_gold" material_id="my_gold"/>
+    <material argos_id="metal_cylinder" material_id="my_gold"/>
   </subsurface_resources>
 
 </gprMax>
