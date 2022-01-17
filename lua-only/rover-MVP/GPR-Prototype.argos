@@ -91,7 +91,9 @@
 
   <physics_engines>
 
-    <dynamics3d id = "dyn3d">
+    <dynamics3d id="dyn3d" default_friction="2.0">
+      <floor height="0.01" friction="0.05"/>
+      <gravity g="10" />
     </dynamics3d>
 
   </physics_engines>
