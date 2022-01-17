@@ -52,7 +52,7 @@
 
   <prototype id="example_vehicle" movable="true">
   
-    <body position = "0,0,0.1" orientation = "0,0,0"/>
+    <body position = "0,0,0" orientation = "0,0,0"/>
     <controller config="example_controller"/>
     <links ref = "base">
       <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
