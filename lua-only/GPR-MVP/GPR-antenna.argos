@@ -54,8 +54,8 @@
 
 <!--Subsurface Resources-->
 
-  <box id= "subsurface_gold" size="0.2,0.2,0.2" movable="false">
-    <body position="0,0,0" orientation="0,0,0"/>
+  <box id= "subsurface_gold" size="0.1,0.1,0.1" movable="false">
+    <body position="0,0,-0.5" orientation="0,0,0"/>
   </box>
 
 <!--Antenna Prototypes-->
