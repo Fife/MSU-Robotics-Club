@@ -91,7 +91,7 @@
 
   <!--Media Configuration-->
   <media>
-    <leds/>
+    <led/>
   </media>
 
   <!--Visualization Configuration-->
