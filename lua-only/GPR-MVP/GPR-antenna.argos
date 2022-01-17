@@ -115,7 +115,7 @@
   <!--
     The gpr_medium tag determines what material the subsurace objects are buried in. 
   -->
-  <gpr_medium material_id="half_space" dielectric_smoothing="true"/>
+  <gpr_medium material_id="half_space"/>
 
   <!--
     The materials tag contains a list of user defined materials. 
