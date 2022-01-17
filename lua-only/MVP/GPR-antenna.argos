@@ -69,6 +69,7 @@
   <physics_engines>
 
     <dynamics3d id = "dyn3d">
+      <gravity g="10">
     </dynamics3d>
 
     <gprMax title="Antenna_Test">
@@ -97,7 +98,7 @@
       <subsurface_resources>
         <material argos_id="subsurface_gold" material_id="my_gold"/>
       </subsurface_resources>
-      
+
     </gprMax>
 
   </physics_engines>
