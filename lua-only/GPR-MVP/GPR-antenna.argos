@@ -14,7 +14,12 @@
 <!--Controller Configuration-->
 
 <controllers>
-
+  <lua_controller id="example_controller">
+    <actuators>
+      <leds implementation="default" medium="leds"/>
+    </actuators>
+    <params/>
+  </lua_controller>
 </controllers>
 
 
@@ -55,6 +60,7 @@
   <prototype id="gpr_transmitter" movable="true">
 
     <body position = "0.05,0,0" orientation = "0,0,0"/>
+    <controller config="example_controller"/>
 
     <links ref = "base">
       <link id="base" geometry="box" size="0.05,0.05,0.05" mass="0.1" position="0,0,0" orientation="0,0,0"/>
@@ -65,6 +71,7 @@
     <prototype id="gpr_receiver" movable="true">
 
     <body position = "-0.05,0,0" orientation = "0,0,0"/>
+    <controller config="example_controller"/>
 
     <links ref = "base">
       <link id="base" geometry="box" size="0.05,0.05,0.05" mass="0.1" position="0,0,0" orientation="0,0,0"/>
@@ -84,7 +91,7 @@
 
   <!--Media Configuration-->
   <media>
-
+    <leds/>
   </media>
 
   <!--Visualization Configuration-->
