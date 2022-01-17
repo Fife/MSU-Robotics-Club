@@ -67,8 +67,8 @@
     </links>
 
     <devices>
-      <leds>
-        <led medium="leds" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
+      <leds medium ="leds">
+        <led id="led" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
       </leds>
     </devices>
 
@@ -84,8 +84,8 @@
     </links>
 
     <devices>
-      <leds>
-        <led medium="leds" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
+      <leds medium ="leds">
+        <led id="led" anchor="base" color= "0,0,0,0" offset="0,0,0.25"/>
       </leds>
     </devices>
 
