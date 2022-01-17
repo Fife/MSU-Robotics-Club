@@ -50,7 +50,7 @@
 
     <devices>
       <leds medium ="leds">
-        <led id="led" anchor="base" color= "255,0,0,0" offset="0,0,0.01"/>
+        <led id="led" anchor="base" color= "255,0,0,0" offset="0,0,0"/>
       </leds>
     </devices>
 
@@ -68,7 +68,7 @@
 
     <devices>
       <leds medium ="leds">
-        <led id="led" anchor="base" color= "0,0,255,0" offset="0,0,0.01"/>
+        <led id="led" anchor="base" color= "0,0,255,0" offset="0,0,0"/>
       </leds>
     </devices>
 
