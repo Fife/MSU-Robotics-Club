@@ -78,36 +78,6 @@
     <dynamics3d id = "dyn3d">
       <gravity g="10"/>
     </dynamics3d>
-
-    <gprMax title="Antenna_Test">
-      <!--
-        gprMax Essential commands
-        These commands are essential for gprMax to run.
-      -->
-      <gpr_essential domain="arena" dx_dy_dz="0.002, 0.002, 0.002" time_window="3e-9"/>
-
-      <!--
-        The gpr_medium tag determines what material the subsurace objects are buried in. 
-      -->
-      <gpr_medium material_id="my_sand" dielectric_smoothing="true"/>
-
-      <!--
-        The materials tag contains a list of user defined materials. 
-      -->
-      <materials>
-        <material id="my_sand" relative_permittivity="3" conductivity="0.01" relative_permeability="1" magnetic_loss="0"/>
-        <material id="my_gold" relative_permittivity="1" conductivity="44.6e6" relative_permeability="1" magnetic_loss="0"/>
-      </materials>
-
-      <!--
-        The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
-      -->
-      <subsurface_resources>
-        <material argos_id="subsurface_gold" material_id="my_gold"/>
-      </subsurface_resources>
-
-    </gprMax>
-
   </physics_engines>
 
   <!--Media Configuration-->
@@ -127,3 +97,33 @@
     </qt-opengl>
   </visualization>
 </argos-configuration>
+
+
+<gprMax title="Antenna_Test">
+  <!--
+    gprMax Essential commands
+    These commands are essential for gprMax to run.
+  -->
+  <gpr_essential domain="arena" dx_dy_dz="0.002, 0.002, 0.002" time_window="3e-9"/>
+
+  <!--
+    The gpr_medium tag determines what material the subsurace objects are buried in. 
+  -->
+  <gpr_medium material_id="my_sand" dielectric_smoothing="true"/>
+
+  <!--
+    The materials tag contains a list of user defined materials. 
+  -->
+  <materials>
+    <material id="my_sand" relative_permittivity="3" conductivity="0.01" relative_permeability="1" magnetic_loss="0"/>
+    <material id="my_gold" relative_permittivity="1" conductivity="44.6e6" relative_permeability="1" magnetic_loss="0"/>
+  </materials>
+
+  <!--
+    The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
+  -->
+  <subsurface_resources>
+    <material argos_id="subsurface_gold" material_id="my_gold"/>
+  </subsurface_resources>
+
+</gprMax>
