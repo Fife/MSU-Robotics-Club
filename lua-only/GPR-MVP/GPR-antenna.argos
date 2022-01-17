@@ -95,11 +95,11 @@
 
   <visualization>
     <qt-opengl lua_editor="true">
-      <camera>
-        <placements>
-          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="65" />
-        </placements>
-      </camera>
+    <camera>
+      <placements>
+        <placement index="0" position="1.26234e-16,2.06155,1.25" look_at="0.00799815,1.23576,0.68609" up="0.00546142,-0.563883,0.825836" lens_focal_length="52" />
+      </placements>
+    </camera>
     </qt-opengl>
   </visualization>
 </argos-configuration>
