@@ -35,7 +35,7 @@
 
 <!--Subsurface Resources-->
   <cylinder id="metal_cylinder" radius="0.01" height="0.2" movable="false">
-      <body position="0,0,-0.5" orientation="0,90,90" />
+      <body position="0,-0.1,-0.63" orientation="-90,0,-90" />
   </cylinder>
 
 <!--Transmitter Prototype-->
