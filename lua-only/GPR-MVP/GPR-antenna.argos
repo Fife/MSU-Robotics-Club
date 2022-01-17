@@ -103,7 +103,7 @@
 
   <!--Media Configuration-->
   <media>
-    <leds id="leds" />>
+    <leds id="leds"/>
   </media>
 
   <!--Visualization Configuration-->
