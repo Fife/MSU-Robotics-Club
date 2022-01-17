@@ -14,20 +14,7 @@
 <!--Controller Configuration-->
 
 <controllers>
-     <lua_controller id="lua1">
-      <actuators>
-        <differential_steering implementation="default" />
-        <leds implementation="default" medium="leds" />
-      </actuators>
-      <sensors>
-        <differential_steering implementation="default" />
-        <footbot_motor_ground implementation="rot_z_only" />
-        <positioning implementation = "default"/>
-        <footbot_proximity implementation="default" show_rays="false" />
-        <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
-      </sensors>
-      <params/>
-    </lua_controller>
+
 </controllers>
 
 
@@ -57,11 +44,6 @@
   </box>
 
 <!--Robots-->
-
-  <foot-bot id="fb_0">
-    <body position="0,0,0" orientation="0,0,0" />
-    <controller config="lua1"/>
-  </foot-bot>
 
 <!--Subsurface Resources-->
 
