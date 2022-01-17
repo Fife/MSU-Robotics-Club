@@ -1,0 +1,110 @@
+<?xml version = "1.0" ?>
+
+<argos-configuration>
+
+<framework>
+	<experiment length ="0"
+		    ticks_per_second="24"
+        random_seed= "0"/>
+</framework>
+
+<controllers>
+  <lua_controller id="example_controller">
+    <actuators>
+      <joints implementation="default">
+        <joint id="base_wheel_fr" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_fl" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_br" mode="velocity" max_impulse="0.005f"/>
+        <joint id="base_wheel_bl" mode="velocity" max_impulse="0.005f"/>
+      </joints>
+    </actuators>
+
+    <sensors>
+      <joints implementation="default">
+        <joint id="base_wheel_fr" mode="velocity"/>
+        <joint id="base_wheel_fl" mode="velocity"/>
+        <joint id="base_wheel_br" mode="velocity"/>
+        <joint id="base_wheel_bl" mode="velocity"/>
+      </joints>
+    </sensors>
+    <params/>
+  </lua_controller>
+</controllers>
+
+
+<arena size="1, 1,1" center="0,0,0" positional_grid_size="1, 1, 1">
+    <floor id="floor"
+           source="image"
+           path="textures/moon_texture.png" />
+
+  <box id="wall_north" size="1,0.1,0.1" movable="false">
+    <body position="0,0.5,0" orientation="0,0,0" />
+  </box>
+  <box id="wall_south" size="1,0.1,0.1" movable="false">
+    <body position="0,-0.5,0" orientation="0,0,0" />
+  </box>
+  <box id="wall_east" size="0.1,1,0.1" movable="false">
+    <body position="0.5,0,0" orientation="0,0,0" />
+  </box>
+  <box id="wall_west" size="0.1,1,0.1" movable="false">
+    <body position="-0.5,0,0" orientation="0,0,0" />
+  </box>
+
+  <prototype id="example_vehicle" movable="true">
+  
+    <body position = "0,0,0" orientation = "0,0,0"/>
+    <controller config="example_controller"/>
+    <links ref = "base">
+      <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
+      <link id="wheel_fl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,.025,0.02" orientation="0,0,-90"/>
+        <link id="wheel_fr" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,-.025,0.02" orientation="0,0,90"/>
+        <link id="wheel_br" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,-.025,0.02" orientation="0,0,90"/>
+        <link id="wheel_bl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,.025,0.02" orientation="0,0,-90"/>
+      </links>
+
+      <joints>
+        <joint id="base_wheel_fr" type="revolute" axis="0,0,1">
+        <parent link="base" position=".025,-.025,.01" orientation="0,0,90"/>
+        <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_fl" type="revolute" axis="0,0,1">
+        <parent link="base" position=".025,.025,.01" orientation="0,0,-90"/>
+        <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_br" type="revolute" axis="0,0,1">
+        <parent link="base" position="-.025,-.025,.01" orientation="0,0,90"/>
+        <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+        <joint id="base_wheel_bl" type="revolute" axis="0,0,1">
+        <parent link="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
+        <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+
+      </joints>
+    </prototype>
+
+
+  </arena>
+
+  <physics_engines>
+
+    <dynamics3d id = "dyn3d">
+    </dynamics3d>
+
+  </physics_engines>
+
+  <media />
+
+  <visualization>
+    <qt-opengl lua_editor="true">
+      <camera>
+        <placements>
+          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="65" />
+        </placements>
+      </camera>
+    </qt-opengl>
+  </visualization>
+</argos-configuration>
