@@ -135,7 +135,7 @@
   -->
   <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
 
-  <hertzian_dipole polarization="z" waveform="my_ricker" link_id="gpr_transmitter">
+  <hertzian_dipole polarization="z" waveform="my_ricker" link_id="gpr_transmitter"/>
   
 
   <!--
