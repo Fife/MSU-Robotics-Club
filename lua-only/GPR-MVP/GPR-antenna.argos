@@ -27,7 +27,7 @@
 
 <!--Arena Configuration-->
 
-<arena size="0.5,0.5,0.5" center="0,0,0" positional_grid_size="1, 1, 1">
+<arena size="0.5,0.5,1" center="0,0,0" positional_grid_size="1, 1, 1">
 
 <!--Arena Walls-->
 
