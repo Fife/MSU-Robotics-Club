@@ -16,7 +16,6 @@
 <controllers>
   <lua_controller id="example_controller">
     <actuators>
-      <leds implementation="default" medium="leds"/>
     </actuators>
     <sensors>
     </sensors>
