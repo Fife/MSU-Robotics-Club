@@ -14,10 +14,11 @@ def getArenaSize(root):
             return(child.attrib['size'])
         
 def getDxDyDz(root):
-    for child in root:
-        if child.tag == 'gpr_essential':
-            print(child.attrib['dx_dy_dz'])
-            return(child.attrib['dx_dy_dz'])
+    for parent in root:
+        if parent.tag == 'gprMax':
+            for child in parent:
+                if child.tag == 'gpr_essential': 
+                    return(child.attrib['dx_dy_dz'])
         
 def getTimeWindow(root):
     for child in root:
