@@ -88,10 +88,7 @@
     </camera>
     </qt-opengl>
   </visualization>
-</argos-configuration>
-
-
-<gprMax title="Antenna_Test">
+  <gprMax title="Antenna_Test">
   <!--
     gprMax Essential commands
     These commands are essential for gprMax to run.
@@ -132,3 +129,7 @@
   </subsurface_resources>
 
 </gprMax>
+
+</argos-configuration>
+
+
