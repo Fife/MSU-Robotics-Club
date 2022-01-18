@@ -12,6 +12,18 @@ def getArenaSize(root):
     for child in root:
         if child.tag == 'arena':
             return(child.attrib['size'])
+        
+def getDxDyDz(root):
+    for child in root:
+        if child.tag == 'gpr_essential':
+            print(child.attrib['dx_dy_dz'])
+            return(child.attrib['dx_dy_dz'])
+        
+def getTimeWindow(root):
+    for child in root:
+        if child.tag == 'gpr_essential':
+            return(child.attrib['time_window'])
+
                
 title=getTitle(root)
 gprTitle='#title: ' + title
@@ -19,9 +31,15 @@ gprTitle='#title: ' + title
 size=getArenaSize(root)
 gprDomain='#domain ' + size.replace(',','')
 
+dx_dy_dz=getDxDyDz(root)
+#gprDxDyDz='#dx_dy_dz: ' + dx_dy_dz
+
 success = open("gprDomain.txt", "w")
 success.write(gprTitle)
 success.write("\n")
 success.write(gprDomain)
+success.write("\n")
+#success.write(gprDxDyDz)
 success.close()
-print(gprTitle)
+print(getDxDyDz(root))
+
