@@ -20,27 +20,35 @@ def getDxDyDz(root):
                 if child.tag == 'gpr_essential': 
                     return(child.attrib['dx_dy_dz'])
         
-def getTimeWindow(root):
-    for child in root:
-        if child.tag == 'gpr_essential':
-            return(child.attrib['time_window'])
-
-               
+def getTime_Window(root):
+    for parent in root:
+        if parent.tag == 'gprMax':
+            for child in parent:
+                if child.tag == 'gpr_essential': 
+                    return(child.attrib['time_window'])
+                
 title=getTitle(root)
 gprTitle='#title: ' + title
 
 size=getArenaSize(root)
-gprDomain='#domain ' + size.replace(',','')
+gprDomain='#domain: ' + size.replace(',','')
 
 dx_dy_dz=getDxDyDz(root)
-#gprDxDyDz='#dx_dy_dz: ' + dx_dy_dz
+gprDxDyDz='#dx_dy_dz: ' + dx_dy_dz.replace(',','')
+
+time_window=getTime_Window(root)
+gprTime_Window='#time_window: ' + time_window
 
 success = open("gprDomain.txt", "w")
 success.write(gprTitle)
 success.write("\n")
 success.write(gprDomain)
 success.write("\n")
-#success.write(gprDxDyDz)
-success.close()
-print(getDxDyDz(root))
+success.write(gprDxDyDz)
+success.write("\n")
+success.write(gprTime_Window)
+success.write("\n")
+success.write("\n")
 
+success.close()
+print(gprTime_Window)
