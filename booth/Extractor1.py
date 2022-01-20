@@ -27,6 +27,19 @@ def getTime_Window(root):
                 if child.tag == 'gpr_essential': 
                     return(child.attrib['time_window'])
                 
+def getMaterials(root):
+    for parent in root:
+        if parent.tag == 'gprMax':
+            for child in parent:
+                if child.tag == 'materials':
+                    for grandchild in child:
+                        if grandchild.tag == 'material':
+                            material=""
+                            for attribute in grandchild:
+                                material.append(attribute)
+                                print(attribute)
+                            return(material)
+                
 title=getTitle(root)
 gprTitle='#title: ' + title
 
@@ -51,4 +64,4 @@ success.write("\n")
 success.write("\n")
 
 success.close()
-print(gprTime_Window)
+print(getMaterials(root))
