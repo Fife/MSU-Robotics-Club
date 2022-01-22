@@ -1,18 +1,18 @@
-function driveForward()
+function driveForward(velocity)
     robot.joints.base_wheel_bl.set_target(velocity)
     robot.joints.base_wheel_fl.set_target(velocity)
-    robot.joints.base_wheel_br.set_target(-velocity)
-    robot.joints.base_wheel_fr.set_target(-velocity)
+    robot.joints.base_wheel_br.set_target(0-velocity)
+    robot.joints.base_wheel_fr.set_target(0-velocity)
 end
 
-function turnLeft()
+function turnLeft(velocity)
     robot.joints.base_wheel_bl.set_target(0)
     robot.joints.base_wheel_fl.set_target(0)
-    robot.joints.base_wheel_br.set_target(-velocity)
-    robot.joints.base_wheel_fr.set_target(-velocity)
+    robot.joints.base_wheel_br.set_target(0-velocity)
+    robot.joints.base_wheel_fr.set_target(0-velocity)
 end
 
-function turnRight()
+function turnRight(velocity)
     robot.joints.base_wheel_bl.set_target(velocity)
     robot.joints.base_wheel_fl.set_target(velocity)
     robot.joints.base_wheel_br.set_target(0)
@@ -20,8 +20,8 @@ function turnRight()
 end
 
 function reverse(velocity)
-    robot.joints.base_wheel_bl.set_target(-velocity)
-    robot.joints.base_wheel_fl.set_target(-velocity)
+    robot.joints.base_wheel_bl.set_target(0-velocity)
+    robot.joints.base_wheel_fl.set_target(0-velocity)
     robot.joints.base_wheel_br.set_target(velocity)
     robot.joints.base_wheel_fr.set_target(velocity)
 end
