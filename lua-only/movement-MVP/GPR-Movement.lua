@@ -5,15 +5,11 @@ function init()
 end
 
 function step()
-    log("wheelvelocities:"..
-    string.format("%.2f", robot.joints.base_wheel_bl.encoder) ..","..
-    string.format("%.2f", robot.joints.base_wheel_fl.encoder) ..","..
-    string.format("%.2f", robot.joints.base_wheel_br.encoder) ..","..
-    string.format("%.2f", robot.joints.base_wheel_fr.encoder))
+    driveTo(0.25,0.25,3)
 end
 
 function reset()
-    driveForward()
+    driveForward(0)
 end
 
 function destroy() 
