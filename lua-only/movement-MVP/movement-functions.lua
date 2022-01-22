@@ -26,7 +26,7 @@ function reverse(velocity)
     robot.joints.base_wheel_fr.set_target(velocity)
 end
 
-function driveTo(x,y)
+function driveTo(x,y, forward_velocity)
 	--get x and y of robot
 	local current_x= robot.positioning.position.x
 	local current_y= robot.positioning.position.y
@@ -74,7 +74,7 @@ function driveTo(x,y)
 	
 	elseif cross_p < 0.005 and cross_p > -0.005 then
 		if a < 2 then
-				robot.wheels.set_velocity(speed_ratio*2, speed_ratio*2)			
+				driveForward(forward_velocity)		
 		end
 	end
 end
