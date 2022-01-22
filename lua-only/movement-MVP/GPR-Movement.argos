@@ -26,6 +26,7 @@
         <joint id="base_wheel_br" mode="velocity"/>
         <joint id="base_wheel_bl" mode="velocity"/>
       </joints>
+      <positioning implementation = "default"/>
     </sensors>
     <params/>
   </lua_controller>
