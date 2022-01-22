@@ -28,7 +28,7 @@
       </joints>
       <positioning implementation = "default"/>
     </sensors>
-    <params script="GPR-Movement.lua"/>
+    <params script="lua-only/movement-MVP/GPR-Movement.lua"/>
   </lua_controller>
 </controllers>
 
