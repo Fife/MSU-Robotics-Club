@@ -3,6 +3,19 @@
 The purpose of this repository is to keep track of the current working robotics experiments and ARGoS configurations of the MSU-Robotics Club. 
 It also serves as a collaboration homebase for the software and hardware teams as projects expand beyond simulation. 
     
+## High level Pseudocode 
+
+Generate GPR Model from .argos file
+Start ARGoS simulation environment
+On simulation step:
+    For each robot:
+        Modify Tx and Rx locations in the GPR Model
+        Perform GPR simulation
+        Write GPR simulation
+        Execute Movement Algorithm
+On simulation Reset:
+    Prompt removal of last GPR simulation results
+     
 ## Quick Start with ARGoS 
 
 The following steps assume that you have already installed ARGoS on your system as described here:
