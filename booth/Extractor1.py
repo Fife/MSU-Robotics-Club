@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-tree = ET.parse('GPR-antenna.xml')
+tree = ET.parse('GPR-antenna.argos')
 root = tree.getroot()
 
 def getTitle(root):
