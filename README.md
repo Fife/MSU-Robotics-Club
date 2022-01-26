@@ -5,16 +5,16 @@ It also serves as a collaboration homebase for the software and hardware teams a
     
 ## High level Pseudocode 
 
-Generate GPR Model from .argos file
-Start ARGoS simulation environment
-On simulation step:
-    For each robot:
-        Modify Tx and Rx locations in the GPR Model
-        Perform GPR simulation
-        Write GPR simulation
-        Execute Movement Algorithm
-On simulation Reset:
-    Prompt removal of last GPR simulation results
+    Generate GPR Model from .argos file
+    Start ARGoS simulation environment
+    On simulation step:
+        For each robot:
+            Modify Tx and Rx locations in the GPR Model
+            Perform GPR simulation
+            Write GPR simulation
+            Execute Movement Algorithm
+        On simulation Reset:
+            Prompt removal of last GPR simulation results
      
 ## Quick Start with ARGoS 
 
