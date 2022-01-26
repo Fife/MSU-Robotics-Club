@@ -7,7 +7,7 @@ local launch_gprmax = sh.command('python', '-m', 'gprMax')
 
 function gpr_init(argos_exp_path)
   --Launch python script to generate the gprMax ".in" file
-  python(python_extractor, (argos_exp_path))
+  python(python_extractor, argos_exp_path)
  
 end
 
