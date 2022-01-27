@@ -52,7 +52,7 @@
 
  
   
-   <prototypeid="vehicle" movable="true">
+   <prototype id="vehicle" movable="true">
  <bodyposition="0,0,0" orientation="0,0,0"/>
  <controllerconfig="my_controller"/>
  <linksref="base">
