@@ -32,14 +32,32 @@ def getMaterials(root):
         if parent.tag == 'gprMax':
             for child in parent:
                 if child.tag == 'materials':
-                    for grandchild in child:
+                    for grandchild in iter(child):
+                        print(grandchild)
+                        material_list = []
+                        material_list.append(grandchild.attrib)
                         if grandchild.tag == 'material':
-                            material=""
-                            for attribute in grandchild:
+                            material=[]
+                            #print(grandchild.attrib)
+                            for attribute in grandchild.attrib:
+                                #print(attribute)
                                 material.append(attribute)
-                                print(attribute)
-                            return(material)
-                
+                        return(material_list)
+                    
+def betterMaterials(root):
+    material_list = root.findall("./gprMax/materials/material")
+    for material in material_list:
+        print(material.attrib[''])
+
+betterMaterials(root)
+
+def getWaveform(root):
+    for parent in root:
+        if parent.tag == 'gprMax':
+            for child in parent:
+                if child.tag == 'waveform': 
+                    return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
+
 title=getTitle(root)
 gprTitle='#title: ' + title
 
@@ -52,6 +70,11 @@ gprDxDyDz='#dx_dy_dz: ' + dx_dy_dz.replace(',','')
 time_window=getTime_Window(root)
 gprTime_Window='#time_window: ' + time_window
 
+waveform=getWaveform(root)
+#gprWaveform='#waveform: ' + waveform
+
+#getMaterials(root)
+
 success = open("gprDomain.txt", "w")
 success.write(gprTitle)
 success.write("\n")
@@ -62,6 +85,9 @@ success.write("\n")
 success.write(gprTime_Window)
 success.write("\n")
 success.write("\n")
+#success.write(gprMaterials)
+success.write("\n")
+success.write("\n")
+
 
 success.close()
-print(getMaterials(root))
