@@ -50,7 +50,7 @@
     <body position="-0.5,0,0" orientation="0,0,0" />
   </box>
 
-  <prototype id="example_vehicle" movable="true">
+ 
   
    <prototypeid="vehicle" movable="true">
  <bodyposition="0,0,0" orientation="0,0,0"/>
