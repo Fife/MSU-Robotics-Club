@@ -52,38 +52,63 @@
 
   <prototype id="example_vehicle" movable="true">
   
-    <body position = "0,0,0" orientation = "0,0,0"/>
-    <controller config="example_controller"/>
-    <links ref = "base">
-      <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0.01" orientation="0,0,0"/>
-      <link id="wheel_fl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,.025,0.02" orientation="0,0,90"/>
-      <link id="wheel_fr" geometry="cylinder" radius="0.02" height=".005" mass=".05" position=".025,-.025,0.02" orientation="0,0,90"/>
-      <link id="wheel_br" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,-.025,0.02" orientation="0,0,90"/>
-      <link id="wheel_bl" geometry="cylinder" radius="0.02" height=".005" mass=".05" position="-.025,.025,0.02" orientation="0,0,90"/>
-    </links>
+   <prototypeid="vehicle" movable="true">
+ <bodyposition="0,0,0" orientation="0,0,0"/>
+ <controllerconfig="my_controller"/>
+ <linksref="base">
+  <linkid="base" geometry="box" size="70,30,15"
+   mass="1" position="0,0,0.01" orientation="0,0,0"/>
+  <linkid="wheel_fl" geometry="cylinder" radius="11" height="22"
+   mass=".05" position="5,5,5" orientation="0,0,-90"/>
+  <linkid="wheel_fr" geometry="cylinder" radius="11" height="22"
+   mass=".05" position="5,-5,5" orientation="0,0,90"/>
+  <linkid="wheel_br" geometry="cylinder" radius="11" height="22"
+   mass=".05" position="-5,-5,5" orientation="0,0,90"/>
+  <linkid="wheel_bl" geometry="cylinder" radius="11" height="22"
+   mass=".05" position="-5,5,5" orientation="0,0,-90"/>  
+  
+  </links>
+<joints>
+   <jointid="base_wheel_fr" type="revolute" axis="0,0,1">
+    <parentlink="base" position=".025,-.025,.01" orientation="0,0,90"/>
+    <childlink="wheel_fr"position="0,0,0"orientation="0,0,0"/>
+  </joint>
+  <jointid="base_wheel_fl"type="revolute"axis="0,0,1">
+   <parentlink="base"position=".025,.025,.01" orientation="0,0,-90"/>
+   <childlink="wheel_fl"position="0,0,0"orientation="0,0,0"/>
+  </joint>
+  <jointid="base_wheel_br"type="revolute"axis="0,0,1">
+   <parentlink="base"position="-.025,-.025,.01" orientation="0,0,90"/>
+   <childlink="wheel_br"position="0,0,0"orientation="0,0,0"/>
+  </joint>
+  <jointid="base_wheel_bl"type="revolute"axis="0,0,1">
+   <parentlink="base"position="-.025,.025,.01" orientation="0,0,-90"/>
+   <childlink="wheel_bl"position="0,0,0"orientation="0,0,0"/>
+  </joint>
+</joints>
+</prototype>
 
-    <joints>
-      <joint id="base_wheel_fr" type="revolute" axis="0,0,1">
-      <parent link="base" position=".025,-.025,.01" orientation="0,0,90"/>
-      <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
-      </joint>
+<lua_controllerid="my_controller">
+ <actuators>
+  <jointsimplementation="default">
+  <jointid="base_wheel_fr"mode="velocity"max_impulse="0.005f"/>
+  <jointid="base_wheel_fl"mode="velocity"max_impulse="0.005f"/>
+  <jointid="base_wheel_br"mode="velocity"max_impulse="0.005f"/>
+  <jointid="base_wheel_bl"mode="velocity"max_impulse="0.005f"/>
+</joints>
+</actuators>
+<sensors>
+ <jointsimplementation="default">
+  <jointid="base_wheel_fr"mode="velocity"/>
+  <jointid="base_wheel_fl"mode="velocity"/>
+  <jointid="base_wheel_br"mode="velocity"/>
+  <jointid="base_wheel_bl"mode="velocity"/>
+</joints>
+</sensors>
+<paramsscript="path/to/script.lua"/>
 
-      <joint id="base_wheel_fl" type="revolute" axis="0,0,1">
-      <parent link="base" position=".025,.025,.01" orientation="0,0,-90"/>
-      <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
-      </joint>
+</lua_controller> 
 
-      <joint id="base_wheel_br" type="revolute" axis="0,0,1">
-      <parent link="base" position="-.025,-.025,.01" orientation="0,0,90"/>
-      <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
-      </joint>
-
-      <joint id="base_wheel_bl" type="revolute" axis="0,0,1">
-      <parent link="base" position="-.025,.025,.01" orientation="0,0,-90"/> 
-      <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
-      </joint>
-    </joints>
-  </prototype>
 
 
   </arena>
