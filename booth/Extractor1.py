@@ -46,8 +46,10 @@ def getMaterials(root):
                     
 def betterMaterials(root):
     material_list = root.findall("./gprMax/materials/material")
+    materials = []
     for material in material_list:
-        print(material.attrib[''])
+        materials.append(material)
+    return materials
 
 betterMaterials(root)
 
