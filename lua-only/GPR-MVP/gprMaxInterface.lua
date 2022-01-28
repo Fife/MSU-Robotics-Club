@@ -11,8 +11,7 @@ function gpr_init(argos_exp_path)
  
 end
 
-function gpr_step(x, y, z, zAngle)
-  --Calculate the locations of the Tx and Rx node with the passed in coordinates
+function gpr_step(Tx_coordinate, Rx_coordinate)
   --Pass the calculated coordinates into the gprMax model
   --Create a new directory to put the results into
   --Run the simulation for that Tx and Rx position, write results in created directory
