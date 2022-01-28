@@ -18,6 +18,7 @@
     <actuators>
     </actuators>
     <sensors>
+    	<positioning implementation="default"/>
     </sensors>
     <params/>
   </lua_controller>
