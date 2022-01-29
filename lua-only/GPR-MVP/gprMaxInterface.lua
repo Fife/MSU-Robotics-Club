@@ -1,6 +1,6 @@
 local sh = require ('sh')
 
-local python_extractor = 'Extractor1.py'
+local python_extractor = 'booth/Extractor1.py'
 
 local python = sh.command('python')
 local launch_gprmax = sh.command('python', '-m', 'gprMax')
