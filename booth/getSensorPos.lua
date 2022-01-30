@@ -1,4 +1,4 @@
--- Takes rover's x,y coordinates, the offset of the sensors from
+-- Takes rover's x,y coordinates, the distance of the sensors from
 -- the center of the rover d, and rover's direction in radians dir.
 -- Returns the coordinates of the transmitter and the receiver.
 function getSensorPos(x, y, d, dir)
