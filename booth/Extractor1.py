@@ -54,7 +54,7 @@ def betterMaterials(root):
         materials.append(material.attrib)
     return materials
 
-betterMaterials(root)
+#betterMaterials(root)
 
 def getWaveform(root):
     for parent in root:
@@ -63,24 +63,5 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
-waveform=getWaveform(root)
+#waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
-
-#getMaterials(root)
-
-success = open("gprDomain.txt", "w")
-success.write(getTitle(root))
-success.write("\n")
-success.write(getArenaSize(root))
-success.write("\n")
-success.write(getDxDyDz(root))
-success.write("\n")
-success.write(getTime_Window(root))
-success.write("\n")
-success.write("\n")
-#success.write(gprMaterials)
-success.write("\n")
-success.write("\n")
-
-
-success.close()
