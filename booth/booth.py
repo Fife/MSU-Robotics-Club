@@ -1,5 +1,5 @@
 import getopt, sys
-from quickxmltest import * 
+from Extractor1 import * 
 
 #Only argument is the path of the argos experiment file
 
