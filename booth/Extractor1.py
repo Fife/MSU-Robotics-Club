@@ -11,14 +11,17 @@ def getTitle(root):
 def getArenaSize(root):
     for child in root:
         if child.tag == 'arena':
-            return(child.attrib['size'])
+            size=child.attrib['size']
+            return('#domain: ' + size.replace(',',' '))
+                 
         
 def getDxDyDz(root):
     for parent in root:
         if parent.tag == 'gprMax':
             for child in parent:
-                if child.tag == 'gpr_essential': 
-                    return(child.attrib['dx_dy_dz'])
+                if child.tag == 'gpr_essential':
+                    dx_dy_dz=child.attrib['dx_dy_dz']
+                    return('#dx_dy_dz: ' + dx_dy_dz.replace(',',''))
         
 def getTime_Window(root):
     for parent in root:
@@ -60,12 +63,6 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
-size=getArenaSize(root)
-gprDomain='#domain: ' + size.replace(',','')
-
-dx_dy_dz=getDxDyDz(root)
-gprDxDyDz='#dx_dy_dz: ' + dx_dy_dz.replace(',','')
-
 time_window=getTime_Window(root)
 gprTime_Window='#time_window: ' + time_window
 
@@ -77,9 +74,9 @@ waveform=getWaveform(root)
 success = open("gprDomain.txt", "w")
 success.write(getTitle(root))
 success.write("\n")
-success.write(gprDomain)
+success.write(getArenaSize(root))
 success.write("\n")
-success.write(gprDxDyDz)
+success.write(getDxDyDz(root))
 success.write("\n")
 success.write(gprTime_Window)
 success.write("\n")
