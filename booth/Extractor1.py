@@ -28,7 +28,7 @@ def getTime_Window(root):
         if parent.tag == 'gprMax':
             for child in parent:
                 if child.tag == 'gpr_essential': 
-                    return(child.attrib['time_window'])
+                    return('#time_window: ' + child.attrib['time_window'])
                 
 def getMaterials(root):
     for parent in root:
@@ -63,9 +63,6 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
-time_window=getTime_Window(root)
-gprTime_Window='#time_window: ' + time_window
-
 waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
 
@@ -78,7 +75,7 @@ success.write(getArenaSize(root))
 success.write("\n")
 success.write(getDxDyDz(root))
 success.write("\n")
-success.write(gprTime_Window)
+success.write(getTime_Window(root))
 success.write("\n")
 success.write("\n")
 #success.write(gprMaterials)
