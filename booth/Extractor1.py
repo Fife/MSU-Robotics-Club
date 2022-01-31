@@ -6,7 +6,7 @@ root = tree.getroot()
 def getTitle(root):
     for child in root:
         if child.tag == 'gprMax':
-            return(child.attrib['title'])
+            return('#title: ' + child.attrib['title'])
 
 def getArenaSize(root):
     for child in root:
@@ -60,9 +60,6 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
-title=getTitle(root)
-gprTitle='#title: ' + title
-
 size=getArenaSize(root)
 gprDomain='#domain: ' + size.replace(',','')
 
@@ -78,7 +75,7 @@ waveform=getWaveform(root)
 #getMaterials(root)
 
 success = open("gprDomain.txt", "w")
-success.write(gprTitle)
+success.write(getTitle(root))
 success.write("\n")
 success.write(gprDomain)
 success.write("\n")
