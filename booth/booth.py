@@ -13,11 +13,12 @@ except IndexError:
   
 else:
   root = getRoot(experiment_path)
-  
   try:
     generateIN(root)
+    
   except:
     print(experiment_path, "is an invalid experiment path")
+    
   else:
     # The root is the XML tree of the experiment.
     # If the xml has succussfully been parsed:
