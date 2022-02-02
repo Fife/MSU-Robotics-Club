@@ -1,7 +1,7 @@
 import fileinput
 import sys
 
-def updateTransmitter(file_path, Tx, Ty, Tz):
+def updateTRx(file_path, Tx, Ty, Tz, Rx, Ry, Rz):
     
     #Open the file at the specified path and read it in to a variable
     file = open(file_path, "r")
@@ -13,13 +13,11 @@ def updateTransmitter(file_path, Tx, Ty, Tz):
     #Loop through to find the line of the Transmitter and write the updated line to the new file
     for line in file_content:
         if "#hertzian_dipole" in line:
-            transmitter = line.split()
-            transmitter[2] = str(Tx)
-            transmitter[3] = str(Ty)
-            transmitter[4] = str(Tz)
-            new_output = ' '.join(transmitter)
-            updated_file.append(new_output.lstrip(' '))
-            updated_file.append("\n")
+            new_output = replaceTx(Tx, Ty, Tz, line)
+            updated_file.append(new_output)
+        elif "#rx" in line:
+            new_output = replaceRx(Rx, Ry, Rz, line)
+            updated_file.append(new_output)
         else:
             updated_file.append(line.lstrip(' '))
     file.close()
@@ -32,3 +30,31 @@ def updateTransmitter(file_path, Tx, Ty, Tz):
     fout.write(final_output)
     fout.close()        
 
+
+def replaceTx(Tx, Ty, Tz, transmitter):
+    transmitter = transmitter.split()
+    transmitter[2] = str(Tx)
+    transmitter[3] = str(Ty)
+    transmitter[4] = str(Tz)
+    transmitter.append("\n")
+    new_output = ' '.join(transmitter)
+    return new_output
+
+def replaceRx(Rx, Ry, Rz, receiver):
+    receiver = receiver.split()
+    receiver[1] = str(Rx)
+    receiver[2] = str(Ry)
+    receiver[3] = str(Rz)
+    receiver.append("\n")
+    new_output = ' '.join(receiver)
+    return new_output
+
+def trxUpdateTest():
+    file_path = 'cylinder_Ascan_2D.in'
+    updateTRx(file_path, 0.15,4.20,1.52, 0,0,0)
+
+    myString = "#hertzian_dipole: z 0.100 0.170 0 my_ricker"
+    myRec = "#rx: 0.140 0.170 0"
+
+    print(replaceTx(0,0,0, myString))
+    print(replaceRx(0,0,0, myRec))
