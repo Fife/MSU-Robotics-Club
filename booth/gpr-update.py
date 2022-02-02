@@ -19,7 +19,7 @@ def updateTRx(file_path, Tx, Ty, Tz, Rx, Ry, Rz):
             new_output = replaceRx(Rx, Ry, Rz, line)
             updated_file.append(new_output)
         else:
-            updated_file.append(line.lstrip(' '))
+            updated_file.append(line)
     file.close()
     
     #Join the list of lines into one big line
