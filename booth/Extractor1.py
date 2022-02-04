@@ -77,7 +77,7 @@ def writeInit(root):
        file.close()
     
 def getRoot(path):
-	tree = ET.parse('GPR-antenna.argos')
+	tree = ET.parse(path)
 	root = tree.getroot()
 	return root
     
