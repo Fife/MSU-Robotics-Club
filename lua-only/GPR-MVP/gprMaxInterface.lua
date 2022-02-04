@@ -2,6 +2,7 @@ local sh = require ('sh')
 
 local python_extractor = 'booth/Extractor1.py'
 local gpr_updater = 'booth/gprUpdater.py'
+local in_generator = 'booth/gprInit.py'
 
 local python = sh.command('python')
 local launch_gprmax = sh.command('python', '-m', 'gprMax')
@@ -15,7 +16,7 @@ function gpr_init(argos_exp_path)
   start_conda('gprMax')
   
   --Launch python script to generate the gprMax ".in" file
-  python(python_extractor, 'booth/current-sim.argos')
+  python(in_generator, 'booth/current-sim.argos')
  
 end
 
