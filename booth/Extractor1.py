@@ -63,5 +63,19 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
+                
+def writeInit(root):
+       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow]
+       data = []
+       for function in process:
+            data.append(function(root))
+            data.append('\n')
+       data_string = ''.join(data)
+       file = open("current_sim.in", "w")
+       for character in data:
+            file.write(character)
+       file.close()
+        
+    
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
