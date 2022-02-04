@@ -9,15 +9,13 @@ local start_conda = sh.command('conda', 'activate')
 
 function gpr_init(argos_exp_path)
   --Copy file over to the booth
-  cp(argos_exp_path, '/booth/current-sim')
-  
-  cd('..')
+  cp(argos_exp_path, 'booth/current-sim.argos')
   
   --Start Conda Environment
   start_conda('gprMax')
   
   --Launch python script to generate the gprMax ".in" file
-  python(python_extractor, argos_exp_path)
+  python(python_extractor, 'booth/current-sim.argos')
  
 end
 
