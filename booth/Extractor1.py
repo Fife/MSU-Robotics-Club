@@ -1,8 +1,5 @@
 import xml.etree.ElementTree as ET
 
-#tree = ET.parse('GPR-antenna.argos')
-#root = tree.getroot()
-
 def getTitle(root):
     for child in root:
         if child.tag == 'gprMax':
@@ -54,7 +51,6 @@ def betterMaterials(root):
         materials.append(material.attrib)
     return materials
 
-#betterMaterials(root)
 
 def getWaveform(root):
     for parent in root:
@@ -75,7 +71,7 @@ def writeInit(root):
        for character in data:
             file.write(character)
        file.close()
-    
+
 def getRoot(path):
 	tree = ET.parse(path)
 	root = tree.getroot()
