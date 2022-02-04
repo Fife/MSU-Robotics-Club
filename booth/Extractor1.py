@@ -23,7 +23,7 @@ def getDxDyDz(root):
                     dx_dy_dz=child.attrib['dx_dy_dz']
                     return('#dx_dy_dz: ' + dx_dy_dz.replace(',',''))
         
-def getTime_Window(root):
+def getTimeWindow(root):
     for parent in root:
         if parent.tag == 'gprMax':
             for child in parent:
