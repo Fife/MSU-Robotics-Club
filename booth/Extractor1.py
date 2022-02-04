@@ -75,7 +75,11 @@ def writeInit(root):
        for character in data:
             file.write(character)
        file.close()
-        
+    
+def getRoot(path):
+	tree = ET.parse('GPR-antenna.argos')
+	root = tree.getroot()
+	return root
     
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
