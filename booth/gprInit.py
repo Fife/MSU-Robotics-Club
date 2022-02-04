@@ -21,6 +21,6 @@ else:
     # If the xml has succussfully been parsed:
     #   Generate the .in file for gprMax
     root = getRoot(experiment_path)
-    print(getTitle(root))
+    writeInit(root)
   
 
