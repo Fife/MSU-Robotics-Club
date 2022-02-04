@@ -71,7 +71,7 @@ def writeInit(root):
             data.append(function(root))
             data.append('\n')
        data_string = ''.join(data)
-       file = open("current_sim.in", "w")
+       file = open("booth/current_sim.in", "w")
        for character in data:
             file.write(character)
        file.close()
