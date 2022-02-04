@@ -59,6 +59,27 @@ def getWaveform(root):
                 if child.tag == 'waveform': 
                     return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
 
+def getRoot(path):
+	tree = ET.parse(path)
+	root = tree.getroot()
+	return root
+
+def getHertzianDipole(root):
+    dipoles = root.findall("./gprMax/hertzian_dipole")
+    prototypes = root.findall("./arena/prototype")
+    #Find Dipoles
+    for dipole in dipoles:
+        output = "#hertzian_dipole"
+        for value in dipole.attrib.values():
+            output += (" " + value)
+        link = dipole.attrib['link_id']
+        
+        for proto in prototypes:
+            if proto.attrib["id"] == link:
+                coordinates = proto.find("body").attrib["position"]
+                coordinates = coordinates.replace(',', ' ')
+                output = output.replace(link, coordinates)
+    return output
                 
 def writeInit(root):
        process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow]
@@ -72,10 +93,6 @@ def writeInit(root):
             file.write(character)
        file.close()
 
-def getRoot(path):
-	tree = ET.parse(path)
-	root = tree.getroot()
-	return root
     
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
