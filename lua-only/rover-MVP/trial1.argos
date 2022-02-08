@@ -2,16 +2,16 @@
  <bodyposition="0,0,0" orientation="0,0,0"/>
  <controllerconfig="my_controller"/>
  <linksref="base">
-  <linkid="base" geometry="box" size="0.70,0.30,0.15"
-   mass="1" position="0,0,0.01" orientation="0,0,0"/>
+  <linkid="base" geometry="box" size="0.70,1.00,0.14"
+   mass="1" position="0,0,0" orientation="0,0,0"/>
   <linkid="wheel_fl" geometry="cylinder" radius="0.11" height="0.22"
-   mass=".05" position="0.5,0.5,0.5" orientation="0,0,-0.90"/>
+   mass=".05" position="0.3585,0.30,0.7" orientation="0,0,-0.90"/>
   <linkid="wheel_fr" geometry="cylinder" radius="11" height="22"
-   mass=".05" position="0.5,-0.5,0.5" orientation="0,0,0.90"/>
+   mass=".05" position="0.3585,-0.30,0.7" orientation="0,0,0.90"/>
   <linkid="wheel_br" geometry="cylinder" radius="11" height="0.22"
-   mass=".05" position="-0.5,-0.5,0.5" orientation="0,0,0.90"/>
+   mass=".05" position="-0.3585,-0.30,0.7" orientation="0,0,0.90"/>
   <linkid="wheel_bl" geometry="cylinder" radius="0.11" height="0.22"
-   mass=".05" position="-0.5,0.5,0.5" orientation="0,0,-0.90"/>  
+   mass=".05" position="-0.3585,0.30,0.7" orientation="0,0,-0.90"/>  
   
   </links>
 <joints>
