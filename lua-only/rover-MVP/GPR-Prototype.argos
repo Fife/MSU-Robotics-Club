@@ -55,7 +55,7 @@
    <prototype id="vehicle" movable="true">
  <body position="0,0,0" orientation="0,0,0"/>
  <controller config="my_controller"/>
- <linksref="base">
+ <links ref="base">
   <link id="base" geometry="box" size="0.70,1.00,0.14"
    mass="1" position="0,0,0" orientation="0,0,0"/>
   <link id="wheel_fl" geometry="cylinder" radius="0.11" height="0.22"
