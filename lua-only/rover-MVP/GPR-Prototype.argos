@@ -9,7 +9,7 @@
 </framework>
 
 <controllers>
-  <lua_controller id="example_controller">
+  <lua_controller id="my_controller">
     <actuators>
       <joints implementation="default">
         <joint id="base_wheel_fr" mode="velocity" max_impulse="0.05f"/>
