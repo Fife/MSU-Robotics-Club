@@ -62,7 +62,7 @@
    mass=".05" position="0.3585,0.30,0.7" orientation="0,0,-0.90"/>
   <link id="wheel_fr" geometry="cylinder" radius="0.11" height="0.22"
    mass=".05" position="0.3585,-0.30,0.7" orientation="0,0,0.90"/>
-  <link id="wheel_br" geometry="cylinder" radius="11" height="0.22"
+  <link id="wheel_br" geometry="cylinder" radius="0.11" height="0.22"
    mass=".05" position="-0.3585,-0.30,0.7" orientation="0,0,0.90"/>
   <link id="wheel_bl" geometry="cylinder" radius="0.11" height="0.22"
    mass=".05" position="-0.3585,0.30,0.7" orientation="0,0,-0.90"/>  
