@@ -15,7 +15,7 @@ function gpr_init(argos_exp_path)
   --Launch python script to generate the gprMax ".in" file
   python(in_generator, "booth/current-sim.argos")
   --Start Conda Environment
-  --start_conda('gprMax')
+  python("booth/launchgpr.py","booth/current-sim.in")
   
  
 end
