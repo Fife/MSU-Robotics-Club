@@ -91,20 +91,34 @@ def getHertzianDipole(root):
                 coordinates = coordinates.replace(',', ' ')
                 output = output.replace(link, coordinates)
     return output
-                
+ 
+ 
+def getRx(root):
+    rx_list = root.findall("./gprMax/rx")
+    prototypes = root.findall("./arena/")
+    for rx in rx_list:
+        if rx.attrib["id"] != None: rx_id = rx.attrib["id"]
+        output = "#rx: "
+        for proto in prototypes:
+            if proto.attrib["id"] == rx_id:
+                if proto.find("body").attrib["position"] != None:
+                    output += proto.find("body").attrib["position"]
+        output = output.replace(",", " ")
+        return output
+                        
 def writeInit(root):
-       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole]
+       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
        data = []
        for function in process:
             data.append(function(root))
             data.append('\n')
        data_string = ''.join(data)
-       file = open("booth/current-sim.in", "w")
+       file = open("current-sim.in", "w")
        for character in data:
             file.write(character)
        file.close()
 
-#print(betterMaterials(getRoot("current-sim.argos")))
+print(getRx(getRoot("GPR-antenna.argos")))
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
-#writeInit(getRoot("current-sim.argos"))
+print(writeInit(getRoot("GPR-antenna.argos")))
