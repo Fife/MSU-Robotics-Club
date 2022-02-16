@@ -1,5 +1,5 @@
 import os
-import getopt, sys, subprocess
+import sys, subprocess
 
 experiment_path = sys.argv[1]
 

@@ -49,20 +49,31 @@ def betterMaterials(root):
     materials = []
     for material in material_list:
         materials.append(material.attrib)
-    return materials
+    
+    output = ""
+    for substance in materials:
+        output += "#material: "
+        output += substance['relative_permittivity'] + " "
+        output += substance['conductivity'] + " "
+        output += substance['relative_permeability'] + " "
+        output += substance['magnetic_loss'] + " "
+        output += substance['id'] + " "
+        output +="\n"
+    return output
 
 
 def getWaveform(root):
     for parent in root:
         if parent.tag == 'gprMax':
             for child in parent:
-                if child.tag == 'waveform': 
-                    return(child.attrib['type'],child.attrib['max_amplitude'],child.attrib['center_freq'],child.attrib['id'])
+                if child.tag == 'waveform':
+                    output = "#waveform: " + str(child.attrib['type'] + " ")+ str(child.attrib['max_amplitude'] + " ")+ str(child.attrib['center_freq']+ " ")+ str(child.attrib['id'] + " ")
+                    return output
 
 def getRoot(path):
-	tree = ET.parse(path)
-	root = tree.getroot()
-	return root
+    tree = ET.parse(path)
+    root = tree.getroot()
+    return root
 
 def getHertzianDipole(root):
     dipoles = root.findall("./gprMax/hertzian_dipole")
@@ -82,7 +93,7 @@ def getHertzianDipole(root):
     return output
                 
 def writeInit(root):
-       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow]
+       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole]
        data = []
        for function in process:
             data.append(function(root))
@@ -93,6 +104,7 @@ def writeInit(root):
             file.write(character)
        file.close()
 
-    
+#print(betterMaterials(getRoot("current-sim.argos")))
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
+#writeInit(getRoot("current-sim.argos"))
