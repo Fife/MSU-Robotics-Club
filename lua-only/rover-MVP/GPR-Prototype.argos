@@ -68,9 +68,9 @@
    mass=".05" position="-0.3585,0.30,0.7" orientation="0,0,-0.90"/>  
 
   <link id="back_axle" geometry="cylinder" radius="0.05" height="0.22"
-    mass=".05" position="-0.3585,0.0,0.7" orientation="0,0,0"
+    mass=".05" position="-0.3585,0.0,0.7" orientation="0,0,0">
   <link id="front_axle" geometry="cylinder" radius="0.05" height="0.22"
-    mass=".05" position="0.3585,0.0,0.7" orientation="0,0,0"
+    mass=".05" position="0.3585,0.0,0.7" orientation="0,0,0">
   
   <link id="base1" geometry="box" size="0.20,0.40,0.14"
    mass="1" position="0.3,0,0" orientation="0,0,0"/>
