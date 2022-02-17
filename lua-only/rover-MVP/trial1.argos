@@ -1,16 +1,16 @@
-<prototypeid="vehicle" movable="true">
- <bodyposition="0,0,0" orientation="0,0,0"/>
- <controllerconfig="my_controller"/>
- <linksref="base">
+<prototype id="vehicle" movable="true">
+ <body position="0,0,0" orientation="0,0,0"/>
+ <controller config="my_controller"/>
+ <links ref="base">
   <linkid="base" geometry="box" size="0.30,1.00,0.14"
    mass="1" position="0,0,0" orientation="0,0,0"/>
-  <linkid="wheel_fl" geometry="cylinder" radius="0.11" height="0.22"
+  <link id="wheel_fl" geometry="cylinder" radius="0.11" height="0.22"
    mass=".05" position="0.3585,0.30,0.7" orientation="0,0,-0.90"/>
-  <linkid="wheel_fr" geometry="cylinder" radius="11" height="22"
+  <link id="wheel_fr" geometry="cylinder" radius="11" height="22"
    mass=".05" position="0.3585,-0.30,0.7" orientation="0,0,0.90"/>
-  <linkid="wheel_br" geometry="cylinder" radius="11" height="0.22"
+  <link id="wheel_br" geometry="cylinder" radius="11" height="0.22"
    mass=".05" position="-0.3585,-0.30,0.7" orientation="0,0,0.90"/>
-  <linkid="wheel_bl" geometry="cylinder" radius="0.11" height="0.22"
+  <link id="wheel_bl" geometry="cylinder" radius="0.11" height="0.22"
    mass=".05" position="-0.3585,0.30,0.7" orientation="0,0,-0.90"/>  
 
   <linkid="front_axle" geometry="cylinder" radius="0.05" height="0.22"
