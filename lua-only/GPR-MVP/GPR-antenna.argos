@@ -127,7 +127,8 @@
     The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
   -->
   <subsurface_resources>
-    <material argos_id="metal_cylinder" material_id="pec"/>
+    <resource argos_id="metal_cylinder" material_id="pec"/>
+    <resource argos_id="arena" material_id="half_space">
   </subsurface_resources>
 
 </gprMax>
