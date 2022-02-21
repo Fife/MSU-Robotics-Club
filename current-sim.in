@@ -1,0 +1,8 @@
+#title: Antenna_Test
+#domain: 0.25 0.25 0.25
+#dx_dy_dz: 0.002 0.002 0.002
+#time_window: 3e-9
+#material: 6 0 1 0 half_space 
+
+#waveform: ricker 1 1.5e9 my_ricker 
+#hertzian_dipole: z my_ricker 0.05 0 0
