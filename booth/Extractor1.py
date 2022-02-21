@@ -3,13 +3,16 @@ import xml.etree.ElementTree as ET
 def getTitle(root):
     for child in root:
         if child.tag == 'gprMax':
-            return('#title: ' + child.attrib['title'])
+            output = '#title: ' + child.attrib['title']
+            return output
+    return None
 
 def getArenaSize(root):
     for child in root:
         if child.tag == 'arena':
             size=child.attrib['size']
             return('#domain: ' + size.replace(',',' '))
+    return None
                  
         
 def getDxDyDz(root):
@@ -19,6 +22,7 @@ def getDxDyDz(root):
                 if child.tag == 'gpr_essential':
                     dx_dy_dz=child.attrib['dx_dy_dz']
                     return('#dx_dy_dz: ' + dx_dy_dz.replace(',',''))
+    return None
         
 def getTimeWindow(root):
     for parent in root:
@@ -26,7 +30,8 @@ def getTimeWindow(root):
             for child in parent:
                 if child.tag == 'gpr_essential': 
                     return('#time_window: ' + child.attrib['time_window'])
-                
+    return None
+            
 def getMaterials(root):
     for parent in root:
         if parent.tag == 'gprMax':
@@ -43,6 +48,8 @@ def getMaterials(root):
                                 #print(attribute)
                                 material.append(attribute)
                         return(material_list)
+    return None
+                        
                     
 def betterMaterials(root):
     material_list = root.findall("./gprMax/materials/material")
@@ -69,6 +76,7 @@ def getWaveform(root):
                 if child.tag == 'waveform':
                     output = "#waveform: " + str(child.attrib['type'] + " ")+ str(child.attrib['max_amplitude'] + " ")+ str(child.attrib['center_freq']+ " ")+ str(child.attrib['id'] + " ")
                     return output
+    return None
 
 def getRoot(path):
     tree = ET.parse(path)
@@ -107,20 +115,22 @@ def getRx(root):
         return final_output
                         
 def writeInit(root):
-       process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
-       data = []
-       for function in process:
-           result = function(root)
-           if result is not None:
-               data.append(result)
-               data.append('\n')
-       data_string = ''.join(data)
-       file = open("booth/current-sim.in", "w")
-       for character in data_string:
-            file.write(character)
-       file.close()
-       
+    process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
+    data = []
+    for function in process:
+        result = function(root)
+        if result is not None:
+            data.append(result)
+            data.append('\n')
+    data_string = ''.join(data)
+    file = open("booth/current-sim.in", "w")
+    for character in data_string:
+        file.write(character)
+    file.close()
+    return None
+   
 #print(writeInit(getRoot("GPR-antenna.argos")))
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
 #print(writeInit(getRoot("GPR-antenna.argos")))
+
