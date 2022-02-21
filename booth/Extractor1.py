@@ -105,7 +105,7 @@ def getRx(root):
     rx_list = root.findall("./gprMax/rx")
     prototypes = root.findall("./arena/")
     for rx in rx_list:
-        if type(rx.attrib["id"]) != None: rx_id = rx.attrib["id"]
+        if type(rx.attrib["id"]) is not None: rx_id = rx.attrib["id"]
         output = "#rx: "
         for proto in prototypes:
             if proto.attrib["id"] == rx_id:
@@ -115,10 +115,11 @@ def getRx(root):
         return final_output
                         
 def writeInit(root):
-    process = [getTitle,getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
+    process = [getTitle, getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
     data = []
     for function in process:
         result = function(root)
+        print(function(root))
         if result is not None:
             data.append(result)
             data.append('\n')
