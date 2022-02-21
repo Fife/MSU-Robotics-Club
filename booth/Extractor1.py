@@ -30,26 +30,7 @@ def getTimeWindow(root):
             for child in parent:
                 if child.tag == 'gpr_essential': 
                     return('#time_window: ' + child.attrib['time_window'])
-    return None
-            
-def getMaterials(root):
-    for parent in root:
-        if parent.tag == 'gprMax':
-            for child in parent:
-                if child.tag == 'materials':
-                    for grandchild in iter(child):
-                        print(grandchild)
-                        material_list = []
-                        material_list.append(grandchild.attrib)
-                        if grandchild.tag == 'material':
-                            material=[]
-                            #print(grandchild.attrib)
-                            for attribute in grandchild.attrib:
-                                #print(attribute)
-                                material.append(attribute)
-                        return(material_list)
-    return None
-                        
+    return None         
                     
 def betterMaterials(root):
     material_list = root.findall("./gprMax/materials/material")
