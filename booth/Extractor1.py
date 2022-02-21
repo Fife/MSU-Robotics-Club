@@ -96,7 +96,16 @@ def getRx(root):
         return final_output
                         
 def writeInit(root):
-    process = [getTitle, getArenaSize,getDxDyDz, getTimeWindow, betterMaterials, getWaveform, getHertzianDipole, getRx]
+    process = [
+        getTitle,
+        getArenaSize,
+        getDxDyDz,
+        getTimeWindow,
+        betterMaterials,
+        getWaveform,
+        getHertzianDipole,
+        getRx
+        ]
     data = []
     for function in process:
         result = function(root)
