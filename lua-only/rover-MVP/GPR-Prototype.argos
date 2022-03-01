@@ -109,7 +109,7 @@
    <parent link="base" position="0.3,0,0" orientation="0,0,-90"/>
    <child link="base1" position="025,.025,.01" orientation="0,0,0"/>
    </joint>
-   </joint>
+ </joint>
   <joint id="base2_base" type="fixed" axis="0,0,0">
    <parent link="base" position="-0.3,0,0" orientation="0,0,-90"/>
    <child link="base2" position="025,.025,.01" orientation="0,0,0"/>
