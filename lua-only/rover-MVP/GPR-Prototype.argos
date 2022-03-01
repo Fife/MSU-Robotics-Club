@@ -79,7 +79,6 @@
   
   </links>
 <joints>
-   <joints>
    <joint id="axle_wheel_fr" type="revolute" axis="0,0,0.1">
     <parent link="front_axle" position="0.0,0.3585,0.7" orientation="0,0,90"/>
     <child link="wheel_fr" position=".025,-.025,.01" orientation="0,0,0"/>
