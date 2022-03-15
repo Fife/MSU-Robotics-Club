@@ -48,7 +48,7 @@
     <body position = "0,0,0" orientation = "0,0,0"/>
     <controller config="example_controller"/>
     <links ref = "base">
-      <link id="base" geometry="box" size="0.1,0.1,0.1" mass="1" position="0,0,0" orientation="0,0,0"/>
+      <link id="base" geometry="box" size="0.1,0.1,0.1" mass="1" position="0,0,0.01" orientation="0,0,0"/>
       <link id="fr_axle" geometry="cylinder" radius="0.05" height="0.1" mass="1" position="0,0,0.1" orientation="0,0,0"/>
     </links>
 
