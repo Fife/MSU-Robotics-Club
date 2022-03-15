@@ -60,7 +60,7 @@
       <link id="axle_bl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875, 0.15,0.07" orientation="0,0,-90"/>
       
       <link id="wheel_fr" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875,-0.35,0.07" orientation="0,0,90"/>
-      <link id="wheel_fl" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875,-0.35,0.07" orientation="0,0,-90"/>
+      <link id="wheel_fl" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875, 0.35,0.07" orientation="0,0,-90"/>
       
 
     </links>
@@ -102,7 +102,7 @@
       </joint>
       
       <joint id="fleel" type="revolute" axis="0,0,1">
-      	<parent link="axle_fr" position="0,0,-0.2" orientation="0,0,0"/>
+      	<parent link="axle_fr" position="0,0,0.2" orientation="0,0,0"/>
       	<child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
