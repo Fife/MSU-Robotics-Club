@@ -12,19 +12,19 @@
   <lua_controller id="my_controller">
     <actuators>
       <joints implementation="default">
-        <joint id="base_wheel_fr" mode="velocity" max_impulse="0.05f"/>
-        <joint id="base_wheel_fl" mode="velocity" max_impulse="0.05f"/>
-        <joint id="base_wheel_br" mode="velocity" max_impulse="0.05f"/>
-        <joint id="base_wheel_bl" mode="velocity" max_impulse="0.05f"/>
+        <joint id="freel" mode="velocity" max_impulse="0.05f"/>
+        <joint id="fleel" mode="velocity" max_impulse="0.05f"/>
+        <joint id="breel" mode="velocity" max_impulse="0.05f"/>
+        <joint id="bleel" mode="velocity" max_impulse="0.05f"/>
       </joints>
     </actuators>
 
     <sensors>
       <joints implementation="default">
-        <joint id="base_wheel_fr" mode="velocity"/>
-        <joint id="base_wheel_fl" mode="velocity"/>
-        <joint id="base_wheel_br" mode="velocity"/>
-        <joint id="base_wheel_bl" mode="velocity"/>
+        <joint id="freel" mode="velocity"/>
+        <joint id="fleel" mode="velocity"/>
+        <joint id="breel" mode="velocity"/>
+        <joint id="bleel" mode="velocity"/>
       </joints>
     </sensors>
     <params/>
@@ -56,11 +56,72 @@
  <body position="0,0,0" orientation="0,0,0"/>
  <controller config="my_controller"/>
  <links ref="base">
-  <link id="base" geometry="box" size="0.30,1.00,0.14"
+ <link id="base" geometry="box" size="0.30,1.00,0.14"
    mass="1" position="0,0,0.01" orientation="0,0,0"/>
+ <link id="base_r" geometry="box" size="0.2,0.4,0.14"
+   mass="1" position="0.3,0,0.01" orientation="0,0,0"/>
+<link id="base_l" geometry="box" size="0.2,0.4,0.14"
+   mass="1" position="-0.3,0,0.01" orientation="0,0,0"/>
+<link id="wheel_fr" geometry="cylinder" radius=".11" height=".05"
+   mass="1" position="0.35,0.3875,0.7" orientation="90,0,0"/>
+<link id="wheel_fl" geometry="cylinder" radius=".11" height=".05"
+   mass="1" position="-0.35,0.3875,0.7" orientation="-90,0,0"/>
+<link id="wheel_br" geometry="cylinder" radius=".11" height=".05"
+   mass="1" position="0.35,-0.3875,0.7" orientation="90,0,0"/>
+<link id="wheel_bl" geometry="cylinder" radius=".11" height=".05"
+   mass="1" position="-0.35,-0.3875,0.7" orientation="-90,0,0"/>
+<link id="axle_fr" geometry="cylinder" radius="0.05" height="0.2"
+    mass="1" position="0.15,0.3875,0.7" orientation="90,0,0"/>
+<link id="axle_fl" geometry="cylinder" radius="0.05" height="0.2"
+    mass="1" position="-0.15,0.3875,0.7" orientation="-90,0,0"/>
+<link id="axle_br" geometry="cylinder" radius="0.05" height="0.2"
+    mass="1" position="0.15,-0.3875,0.7" orientation="90,0,0"/>
+<link id="axle_bl" geometry="cylinder" radius="0.05" height="0.2"
+    mass="1" position="-0.15,-0.3875,0.7" orientation="-90,0,0"/>
+
 
   </links>
   <joints>
+<joint id="rbase" type="fixed" axis="0,0,0">
+      <parent link="base" position="0.3,0,0.01" orientation="0,0,90"/>
+      <child link="base_r" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="lbase" type="fixed" axis="0,0,0">
+      <parent link="base" position="-0.3,0,0.01" orientation="0,0,-90"/>
+      <child link="base_l" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="fraxle" type="fixed" axis="0,0,0">
+      <parent link="base" position="0.15,0.3875,.005" orientation="0,0,90"/>
+      <child link="axle_fr" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="flaxle" type="fixed" axis="0,0,0">
+      <parent link="base" position="-0.15,0.3875,.005" orientation="0,0,-90"/>
+      <child link="axle_fl" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="braxle" type="fixed" axis="0,0,0">
+      <parent link="base" position="0.15,-0.3875,.005" orientation="0,0,90"/>
+      <child link="axle_br" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="blaxle" type="fixed" axis="0,0,0">
+      <parent link="base" position="-0.15,-0.3875,.005" orientation="0,0,-90"/>
+      <child link="axle_bl" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="freel" type="revolute" axis="0,0,1">
+      <parent link="axle_fr" position="0.35,0.3875,0.35" orientation="0,0,90"/>
+      <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="fleel" type="revolute" axis="0,0,1">
+      <parent link="axle_fl" position="-0.35,0.3875,0.35" orientation="0,0,-90"/>
+      <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="breel" type="revolute" axis="0,0,1">
+      <parent link="axle_br" position="0.35,0.3875,0.35" orientation="0,0,90"/>
+      <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
+       </joint>
+<joint id="bleel" type="revolute" axis="0,0,1">
+      <parent link="axle_bl" position="-0.35,-0.3875,0.35" orientation="0,0,-90"/>
+      <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
+       </joint>
 
 </joints>
 </prototype>
