@@ -60,7 +60,7 @@
 	</joint>
        <joint id="base_l" type="fixed" axis="0,0,0">
 	      <parent link="base" position="0,0.15,0.71" orientation="0,0,0"/>
-	      <child link="base_r" position="0,0,0" orientation="0,0,0"/>
+	      <child link="base_l" position="0,0,0" orientation="0,0,0"/>
       </joint>
     </joints>
   </prototype>
