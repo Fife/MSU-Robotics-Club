@@ -72,22 +72,22 @@
       </joint>
       
       <joint id="fraxle" type="fixed" axis="0,0,0">
-      	<parent link="base" position="0.3875,-0.15,0.12" orientation="0,0,90"/>
+      	<parent link="base" position="0.3875,-0.15,0.07" orientation="0,0,90"/>
       	<child link="axle_fr" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
       <joint id="flaxle" type="fixed" axis="0,0,0">
-      	<parent link="base" position="0.3875,0.15,0.12" orientation="0,0,-90"/>
+      	<parent link="base" position="0.3875,0.15,0.07" orientation="0,0,-90"/>
       	<child link="axle_fl" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
       <joint id="braxle" type="fixed" axis="0,0,0">
-      	<parent link="base" position="-0.3875,-0.15,0.12" orientation="0,0,90"/>
+      	<parent link="base" position="-0.3875,-0.15,0.07" orientation="0,0,90"/>
       	<child link="axle_br" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
       <joint id="blaxle" type="fixed" axis="0,0,0">
-      	<parent link="base" position="-0.3875,0.15,0.12" orientation="0,0,-90"/>
+      	<parent link="base" position="-0.3875,0.15,0.07" orientation="0,0,-90"/>
       	<child link="axle_bl" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
