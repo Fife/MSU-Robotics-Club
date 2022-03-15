@@ -61,8 +61,6 @@
       
       <link id="wheel_fr" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875,-0.35,0.07" orientation="0,0,90"/>
       <link id="wheel_fl" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875,-0.35,0.07" orientation="0,0,-90"/>
-      <link id="wheel_br" geometry="cylinder" radius=".11" height=".05" mass="1" position="-0.3875,-0.35,0.07" orientation="0,0,90"/>
-      <link id="wheel_bl" geometry="cylinder" radius=".11" height=".05" mass="1" position="-0.3875,-0.35,0.07" orientation="0,0,-90"/>
       
 
     </links>
@@ -108,15 +106,6 @@
       	<child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
-      <joint id="breel" type="revolute" axis="0,0,1">
-      	<parent link="axle_fr" position="0,0,0.2" orientation="0,0,0"/>
-      	<child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
-      </joint>
-      
-      <joint id="bleel" type="revolute" axis="0,0,1">
-      	<parent link="axle_fr" position="0,0,-0.2" orientation="0,0,0"/>
-      	<child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
-      </joint>
       
     </joints>
   </prototype>
