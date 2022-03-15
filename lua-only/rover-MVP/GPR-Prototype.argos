@@ -59,9 +59,9 @@
 <link id="base" geometry="box" size="0.30,1.00,0.14"
    mass="1" position="0,0,0.11" orientation="0,0,0"/>
 <link id="base_r" geometry="box" size="0.2,0.4,0.14"
-   mass="1" position="0.3,0,0.11" orientation="0,0,0"/>
+   mass="1" position="0.15,0,0.11" orientation="0,0,0"/>
 <link id="base_l" geometry="box" size="0.2,0.4,0.14"
-   mass="1" position="-0.3,0,0.11" orientation="0,0,0"/>
+   mass="1" position="-0.15,0,0.11" orientation="0,0,0"/>
 <link id="wheel_fr" geometry="cylinder" radius=".11" height=".05"
    mass="1" position="0.35,0.3875,0.12" orientation="0,90,90"/>
 <link id="wheel_fl" geometry="cylinder" radius=".11" height=".05"
@@ -84,11 +84,11 @@
   </links>
   <joints>
 <joint id="rbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="0.15,0,0.01" orientation="0,0,90"/>
+      <parent link="base" position="0.3,0,0.01" orientation="0,0,90"/>
       <child link="base_r" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="lbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="-0.15,0,0.01" orientation="0,0,-90"/>
+      <parent link="base" position="-0.3,0,0.01" orientation="0,0,-90"/>
       <child link="base_l" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="fraxle" type="fixed" axis="0,0,0">
