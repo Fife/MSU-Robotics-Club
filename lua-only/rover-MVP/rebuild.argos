@@ -102,7 +102,7 @@
       </joint>
       
       <joint id="fleel" type="revolute" axis="0,0,1">
-      	<parent link="axle_fr" position="0,0,-0.2" orientation="0,0,0"/>
+      	<parent link="axle_fl" position="0,0,0.2" orientation="0,0,0"/>
       	<child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
