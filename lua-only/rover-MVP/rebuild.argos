@@ -11,12 +11,20 @@
 <controllers>
   <lua_controller id="example_controller">
     <actuators>
-      <joints implementation="default">
+        <joints implementation="default">
+         <joint id="freel" mode="velocity" max_impulse="0.05f"/>
+         <joint id="fleel" mode="velocity" max_impulse="0.05f"/>
+         <joint id="breel" mode="velocity" max_impulse="0.05f"/>
+         <joint id="bleel" mode="velocity" max_impulse="0.05f"/>
       </joints>
     </actuators>
 
     <sensors>
       <joints implementation="default">
+        <joint id="freel" mode="velocity"/>
+        <joint id="fleel" mode="velocity"/>
+        <joint id="breel" mode="velocity"/>
+        <joint id="bleel" mode="velocity"/>
       </joints>
       <positioning implementation = "default"/>
     </sensors>
