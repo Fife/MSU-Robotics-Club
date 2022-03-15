@@ -1,0 +1,137 @@
+<?xml version = "1.0" ?>
+
+<argos-configuration>
+
+<!--Framework Configuration-->
+
+<framework>
+	<experiment length ="0"
+		    ticks_per_second="24"
+        random_seed= "0"/>
+</framework>
+
+
+<!--Controller Configuration-->
+
+<controllers>
+  <lua_controller id="example_controller">
+    <actuators>
+    </actuators>
+    <sensors>
+    	<positioning implementation="default"/>
+    </sensors>
+    <params/>
+  </lua_controller>
+</controllers>
+
+
+<!--Arena Configuration-->
+
+<arena size="0.25,0.25,0.25" center="0,0,0" positional_grid_size="1, 1, 1">
+<!--Arena Walls-->
+
+<!--Robots-->
+
+<!--Subsurface Resources-->
+  <cylinder id="metal_cylinder" radius="0.01" height="0.2" movable="false">
+      <body position="0,-0.1,-0.063" orientation="-90,0,-90" />
+  </cylinder>
+
+<!--Transmitter Prototype-->
+  <prototype id="gpr_transmitter" movable="true">
+
+    <body position = "0.05,0,0" orientation = "0,0,0"/>
+    <controller config="example_controller"/>
+
+    <links ref = "base">
+      <link id="base" geometry="box" size="0.01,0.01,0.01" mass="0.1" position="0,0,0" orientation="0,0,0"/>
+    </links>
+
+  </prototype>
+
+<!--Receiver Prototype-->
+    <prototype id="gpr_receiver" movable="true">
+
+    <body position = "-0.05,0,0" orientation = "0,0,0"/>
+    <controller config="example_controller"/>
+
+    <links ref = "base">
+      <link id="base" geometry="box" size="0.01,0.01,0.01" mass="0.1" position="0,0,0" orientation="0,0,0"/>
+    </links>
+
+  </prototype>
+</arena>
+
+  <!--Physics Engines Configuration-->
+
+  <physics_engines>
+
+  <dynamics3d id="dyn3d" default_friction="2.0">
+      <floor height="0.01" friction="0.05"/>
+      <gravity g="10" />
+    </dynamics3d>
+
+  </physics_engines>
+
+  <!--Media Configuration-->
+  <media>
+    <led id="leds"/>
+  </media>
+
+  <!--Visualization Configuration-->
+
+  <visualization>
+    <qt-opengl lua_editor="true">
+    <camera>
+      <placements>
+        <placement index="0" position="1.26234e-16,2.06155,1.25" look_at="0.00799815,1.23576,0.68609" up="0.00546142,-0.563883,0.825836" lens_focal_length="52" />
+      </placements>
+    </camera>
+    </qt-opengl>
+  </visualization>
+  
+  <gprMax title="Antenna_Test">
+  <!--
+    gprMax Essential commands
+    These commands are essential for gprMax to run.
+  -->
+  <gpr_essential domain="arena" dx_dy_dz="0.002, 0.002, 0.002" time_window="3e-9"/>
+
+  <!--
+    The gpr_medium tag determines what material the subsurace objects are buried in. 
+  -->
+  <gpr_medium material_id="half_space"/>
+
+  <!--
+    The materials tag contains a list of user defined materials. 
+  -->
+  <materials>
+    <!--
+    Possible Future Materials
+
+    <material id="my_sand" relative_permittivity="3" conductivity="0.01" relative_permeability="1" magnetic_loss="0"/>
+    <material id="my_gold" relative_permittivity="1" conductivity="44.6e6" relative_permeability="1" magnetic_loss="0"/>
+    -->
+    <material id="half_space" relative_permittivity="6" conductivity="0" relative_permeability="1" magnetic_loss="0"/>
+  </materials>
+
+  <!--
+    The waveform tag contains information about a user described waveform pattern. 
+  -->
+  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
+
+  <hertzian_dipole polarization="z" link_id="gpr_transmitter" waveform="my_ricker" />
+  
+  <rx id="gpr_receiver"/>
+
+  <!--
+    The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
+  -->
+  <subsurface_resources>
+    <resource argos_id="metal_cylinder" material_id="pec"/>
+    <resource argos_id="arena" material_id="half_space"/>
+  </subsurface_resources>
+
+</gprMax>
+
+</argos-configuration>
