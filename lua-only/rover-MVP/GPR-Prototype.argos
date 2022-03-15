@@ -58,21 +58,9 @@
  <links ref="base">
   <link id="base" geometry="box" size="0.30,1.00,0.14"
    mass="1" position="0,0,0.01" orientation="0,0,0"/>
-<link id="base_r" geometry="box" size="0.2,0.4,0.14"
-   mass="1" position="0.3,0,0.01" orientation="0,0,0"/>
-<link id="base_l" geometry="box" size="0.2,0.4,0.14"
-   mass="1" position="-0.3,0,0.01" orientation="0,0,0"/>
 
   </links>
   <joints>
-<joint id="rbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="0.3,0,0.01" orientation="0,0,90"/>
-      <child link="base_r" position="0,0,0" orientation="0,0,0"/>
-       </joint>
-<joint id="lbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="-0.3,0,0.01" orientation="0,0,-90"/>
-      <child link="base_l" position="0,0,0" orientation="0,0,0"/>
-       </joint>
 
 </joints>
 </prototype>
