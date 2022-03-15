@@ -84,11 +84,11 @@
   </links>
   <joints>
 <joint id="rbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="0.3,0,0.01" orientation="0,0,90"/>
+      <parent link="base" position="0.15,0,0.01" orientation="0,0,90"/>
       <child link="base_r" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="lbase" type="fixed" axis="0,0,0">
-      <parent link="base" position="-0.3,0,0.01" orientation="0,0,-90"/>
+      <parent link="base" position="-0.15,0,0.01" orientation="0,0,-90"/>
       <child link="base_l" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="fraxle" type="fixed" axis="0,0,0">
