@@ -56,24 +56,24 @@
     </links>
 
     <joints>
-      <joint id="base_wheel_fr" type="fixed" axis="0,0,0">
+      <joint id="base_fr_axle" type="fixed" axis="0,0,0">
       <parent link="base" position="0.15,-0.3875,0.07" orientation="0,0,90"/>
       <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
       </joint>
 
-      <joint id="base_wheel_fl" type="fixed" axis="0,0,0">
+      <joint id="base_fl_axle" type="fixed" axis="0,0,0">
       <parent link="base" position="0.15,0.3875,0.07" orientation="0,0,-90"/>
-      <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
+      <child link="fl_axle" position="0,0,0" orientation="0,0,0"/>
       </joint>
 
-      <joint id="base_wheel_br" type="fixed" axis="0,0,0">
+      <joint id="base_br_axle" type="fixed" axis="0,0,0">
       <parent link="base" position="-0.15,-0.3875,0.07" orientation="0,0,90"/>
-      <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
+      <child link="br_axle" position="0,0,0" orientation="0,0,0"/>
       </joint>
 
-      <joint id="base_wheel_bl" type="fixed" axis="0,0,0">
+      <joint id="base_bl_axle" type="fixed" axis="0,0,0">
       <parent link="base" position="-0.15,0.3875,0.07" orientation="0,0,-90"/> 
-      <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
+      <child link="bl_axle" position="0,0,0" orientation="0,0,0"/>
       </joint>
     </joints>
   </prototype>
