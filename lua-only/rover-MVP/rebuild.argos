@@ -49,17 +49,17 @@
     <controller config="example_controller"/>
     <links ref = "base">
       <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.01" orientation="0,0,0"/>
-      <link id="base_r" geometry="box" size="0.4,0.2,0.14" mass="1" position="0,-0.15,0.071" orientation="0,0,0"/>
-      <link id="base_l" geometry="box" size="0.4,0.2,0.14" mass="1" position="0,0.15,0.071" orientation="0,0,0"/>
+      <link id="base_r" geometry="box" size="0.2,0.4,0.14" mass="1" position="0,-0.15,0.071" orientation="0,90,0"/>
+      <link id="base_l" geometry="box" size="0.2,0.4,0.14" mass="1" position="0,0.15,0.071" orientation="0,-90,0"/>
     </links>
 
     <joints>
       <joint id="base_r" type="fixed" axis="0,0,0">
-	      <parent link="base" position="0,-0.15,0.071" orientation="0,0,0"/>
+	      <parent link="base" position="0,-0.15,0.071" orientation="0,90,0"/>
 	      <child link="base_r" position="0,0,0" orientation="0,0,0"/>
 	</joint>
        <joint id="base_l" type="fixed" axis="0,0,0">
-	      <parent link="base" position="0,0.15,0.071" orientation="0,0,0"/>
+	      <parent link="base" position="0,0.15,0.071" orientation="0,-90,0"/>
 	      <child link="base_l" position="0,0,0" orientation="0,0,0"/>
       </joint>
     </joints>
