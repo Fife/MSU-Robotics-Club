@@ -53,7 +53,7 @@
 
   <prototype id="gpr-bot" movable="true">
   
-    <body position = "-4,-4,-0.05" orientation = "0,0,0"/>
+    <body position = "-4,-4, 0" orientation = "0,0,0"/>
     <controller config="gpr-bot"/>
     <links ref = "base">
       <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.11" orientation="0,0,0"/>
