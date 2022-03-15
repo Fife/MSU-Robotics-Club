@@ -116,7 +116,7 @@
       <joint id="bleel" type="revolute" axis="0,0,1">
       	<parent link="axle_bl" position="0,0,0.2" orientation="0,0,0"/>
       	<child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
-      </joint
+      </joint>
       
       
     </joints>
