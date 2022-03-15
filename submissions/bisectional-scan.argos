@@ -38,16 +38,16 @@
            source="image"
            path="textures/moon_texture.png" />
 
- <box id="wall_north" size="6,0.1,0.1" movable="false">
+ <box id="wall_north" size="10,0.1,0.1" movable="false">
     <body position="0,5,0" orientation="0,0,0" />
   </box>
-  <box id="wall_south" size="6,0.1,0.1" movable="false">
+  <box id="wall_south" size="10,0.1,0.1" movable="false">
     <body position="0,-5,0" orientation="0,0,0" />
   </box>
-  <box id="wall_east" size="0.1,6,0.1" movable="false">
+  <box id="wall_east" size="0.1,10,0.1" movable="false">
     <body position="5,0,0" orientation="0,0,0" />
   </box>
-  <box id="wall_west" size="0.1,6,0.1" movable="false">
+  <box id="wall_west" size="0.1,10,0.1" movable="false">
     <body position="-5,0,0" orientation="0,0,0" />
   </box>
 
