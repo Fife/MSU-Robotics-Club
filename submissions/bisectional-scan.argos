@@ -33,22 +33,22 @@
 </controllers>
 
 
-<arena size="6, 6,12" center="0,0,0" positional_grid_size="1, 1, 1">
+<arena size="6, 6,12" center="0,0,-1" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
            path="textures/moon_texture.png" />
 
  <box id="wall_north" size="6,0.1,0.1" movable="false">
-    <body position="0,3,-10" orientation="0,0,0" />
+    <body position="0,3,0" orientation="0,0,0" />
   </box>
   <box id="wall_south" size="6,0.1,0.1" movable="false">
-    <body position="0,-3,-10" orientation="0,0,0" />
+    <body position="0,-3,0" orientation="0,0,0" />
   </box>
   <box id="wall_east" size="0.1,6,0.1" movable="false">
-    <body position="3,0,-10" orientation="0,0,0" />
+    <body position="3,0,0" orientation="0,0,0" />
   </box>
   <box id="wall_west" size="0.1,6,0.1" movable="false">
-    <body position="-3,0,-10" orientation="0,0,0" />
+    <body position="-3,0,0" orientation="0,0,0" />
   </box>
 
   <prototype id="gpr-bot" movable="true">
