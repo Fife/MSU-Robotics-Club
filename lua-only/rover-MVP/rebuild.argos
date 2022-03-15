@@ -54,7 +54,7 @@
 
     <joints>
       <joint id="base_fr_axle" type="fixed" axis="0,0,0">
-      <parent link="base" position="0.05,-0.05,0.15" orientation="0,0,90"/>
+      <parent link="base" position="0,0,0.2" orientation="0,0,0"/>
       <child link="fr_axle" position="0,0,0" orientation="0,0,0"/>
       </joint>
     </joints>
