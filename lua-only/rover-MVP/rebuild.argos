@@ -49,12 +49,14 @@
     <controller config="example_controller"/>
     <links ref = "base">
       <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.01" orientation="0,0,0"/>
+      
       <link id="base_r" geometry="box" size="0.4,0.14,0.2" mass="1" position="0,-0.15,0.08" orientation="0,0,90"/>
       <link id="base_l" geometry="box" size="0.4,0.14,0.2" mass="1" position="0,0.15,0.08" orientation="0,0,-90"/>
+      
       <link id="axle_fr" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="0.3875,-0.15,0.12" orientation="0,0,90"/>
-      <link id="axle_fl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="0.3875,-0.15,0.12" orientation="0,0,-90"/>
+      <link id="axle_fl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="0.3875,-0.15,0.12" orientation="0,0,90"/>
       <link id="axle_br" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875,-0.15,0.12" orientation="0,0,90"/>
-      <link id="axle_bl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875,-0.15,0.12" orientation="0,0,-90"/>
+      <link id="axle_bl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875,-0.15,0.12" orientation="0,0,90"/>
     </links>
 
     <joints>
