@@ -94,7 +94,7 @@
       </joint>
       
       <joint id="freel" type="fixed" axis="0,0,0">
-      	<parent link="axle_fr" position="0,-0.2,0" orientation="0,0,90"/>
+      	<parent link="axle_fr" position="0,0,0.2" orientation="0,0,90"/>
       	<child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
       </joint>
       
