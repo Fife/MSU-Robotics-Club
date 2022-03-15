@@ -33,7 +33,7 @@
 </controllers>
 
 
-<arena size="6, 6,12" center="0,0,-10" positional_grid_size="1, 1, 1">
+<arena size="6, 6,12" center="0,0,0" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
            path="textures/moon_texture.png" />
