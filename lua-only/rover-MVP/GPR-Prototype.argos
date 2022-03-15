@@ -108,19 +108,19 @@
       <child link="axle_bl" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="freel" type="revolute" axis="0,0,1">
-      <parent link="axle_fr" position="0.35,0.3875,0.35" orientation="0,0,90"/>
+      <parent link="axle_fr" position="0.35,0.3875,0.35" orientation="0,0,0"/>
       <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="fleel" type="revolute" axis="0,0,1">
-      <parent link="axle_fl" position="-0.35,0.3875,0.35" orientation="0,0,-90"/>
+      <parent link="axle_fl" position="-0.35,0.3875,0.35" orientation="0,0,0"/>
       <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="breel" type="revolute" axis="0,0,1">
-      <parent link="axle_br" position="0.35,0.3875,0.35" orientation="0,0,90"/>
+      <parent link="axle_br" position="0.35,0.3875,0.35" orientation="0,0,0"/>
       <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
        </joint>
 <joint id="bleel" type="revolute" axis="0,0,1">
-      <parent link="axle_bl" position="-0.35,-0.3875,0.35" orientation="0,0,-90"/>
+      <parent link="axle_bl" position="-0.35,-0.3875,0.35" orientation="0,0,0"/>
       <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
        </joint>
 
