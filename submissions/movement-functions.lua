@@ -13,8 +13,8 @@ function driveForward(velocity)
 end
 
 function turnLeft(velocity)
-    robot.joints.bleel.set_target(0)
-    robot.joints.fleel.set_target(0)
+    robot.joints.bleel.set_target(0-velocity)
+    robot.joints.fleel.set_target(0-velocity)
     robot.joints.breel.set_target(0-velocity)
     robot.joints.freel.set_target(0-velocity)
 end
@@ -22,8 +22,8 @@ end
 function turnRight(velocity)
     robot.joints.bleel.set_target(velocity)
     robot.joints.fleel.set_target(velocity)
-    robot.joints.breel.set_target(0)
-    robot.joints.freel.set_target(0)
+    robot.joints.breel.set_target(velocity)
+    robot.joints.freel.set_target(velocity)
 end
 
 function reverse(velocity)
@@ -47,8 +47,20 @@ function driveTo(x,y, forward_velocity)
 
 	local traj_magnitude=math.sqrt(sum_of_squares)	
 
+	local w = robot.positioning.orientation.w
+	local x = robot.positioning.orientation.x
+	local y = robot.positioning.orientation.y
+	local z = robot.positioning.orientation.z
+	local t3 = 2*(w*z+x*y)
+	local t4 = 1 - 2*(y*y+z*z)
+
+	local yaw = math.atan(t3, t4)*(180/math.pi)
+	if yaw<0 then
+		yaw = yaw + 360
+	end
+	yaw = yaw * math.pi/180
 	--convert quarternion to z rotation
-	local current_angle=math.asin(robot.positioning.orientation.z)*2
+	local current_angle= yaw
 
 	--create cartesian face vector 
 
@@ -68,19 +80,19 @@ function driveTo(x,y, forward_velocity)
 	
 
 	log("Angle between :" .. a)
-	log("Cross Product:" .. cross_p)
-	log("Face Angle " .. math.deg(current_angle))
+	--log("Cross Product:" .. cross_p)
+	log("Face Angle " .. current_angle)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
 	local speed_ratio = 10 
 	
-	if cross_p < -0.005 then
+	if cross_p < -0.02 then
 		turnLeft(speed_ratio/2)
 	
-	elseif cross_p > 0.005 then 
+	elseif cross_p > 0.02 then 
 		turnRight(speed_ratio/2)
 	
-	elseif cross_p < 0.005 and cross_p > -0.005 then
-		if a < 2 then
+	else
+		if a < 0.5 then
 				driveForward(forward_velocity)		
 		end
 	end

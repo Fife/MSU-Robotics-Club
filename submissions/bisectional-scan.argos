@@ -33,23 +33,35 @@
 </controllers>
 
 
-<arena size="10, 10,5" center="0,0,0" positional_grid_size="1, 1, 1">
+<arena size="12, 12,5" center="0,0,0" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
            path="textures/moon_texture.png" />
 
- <box id="wall_north" size="10,0.1,0.1" movable="false">
-    <body position="0,5,0" orientation="0,0,0" />
+ <box id="wall_north" size="12,0.1,0.1" movable="false">
+    <body position="0,6,0" orientation="0,0,0" />
   </box>
-  <box id="wall_south" size="10,0.1,0.1" movable="false">
-    <body position="0,-5,0" orientation="0,0,0" />
+  <box id="wall_south" size="12,0.1,0.1" movable="false">
+    <body position="0,-6,0" orientation="0,0,0" />
   </box>
-  <box id="wall_east" size="0.1,10,0.1" movable="false">
-    <body position="5,0,0" orientation="0,0,0" />
+  <box id="wall_east" size="0.1,12,0.1" movable="false">
+    <body position="6,0,0" orientation="0,0,0" />
   </box>
-  <box id="wall_west" size="0.1,10,0.1" movable="false">
-    <body position="-5,0,0" orientation="0,0,0" />
+  <box id="wall_west" size="0.1,12,0.1" movable="false">
+    <body position="-6,0,0" orientation="0,0,0" />
   </box>
+  
+  <box id="subsurface_cube" size="3,2,1" movable="false">
+    <body position="-2,-2,-1.5" orientation="0,0,0" />
+  </box>
+  
+  <cylinder id="subsurface_cylinder" radius="2" height="1.5" movable="false">
+    <body position="2,0,-3" orientation="0,0,0" />
+  </cylinder>
+  
+  <cylinder id="subsurface_cylinder2" radius="1.5" height="1" movable="false">
+    <body position="-2.5,2.5,-1.8" orientation="0,0,90" />
+  </cylinder>
 
   <prototype id="gpr-bot" movable="true">
   
@@ -135,7 +147,7 @@
   <physics_engines>
 
     <dynamics3d id="dyn3d" default_friction="2.0">
-      <floor height="0.01" friction="0.02"/>
+      <floor height="0.01" friction="0.1"/>
       <gravity g="10" />
     </dynamics3d>
 
@@ -147,7 +159,7 @@
     <qt-opengl lua_editor="true">
       <camera>
         <placements>
-          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="65" />
+          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="14" />
         </placements>
       </camera>
     </qt-opengl>

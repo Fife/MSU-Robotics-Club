@@ -94,6 +94,9 @@ def getRx(root):
                 output += proto.find("body").attrib["position"]
         final_output = output.replace(",", " ")
         return final_output
+    
+def fillArena(root):
+
                         
 def writeInit(root):
     process = [

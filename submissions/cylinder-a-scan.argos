@@ -27,20 +27,20 @@
 
 <!--Arena Configuration-->
 
-<arena size="0.25,0.25,0.25" center="0,0,0" positional_grid_size="1, 1, 1">
+<arena size="0.25,0.25,0.25" center="0.125,0.125,-0.05" positional_grid_size="1, 1, 1">
 <!--Arena Walls-->
 
 <!--Robots-->
 
 <!--Subsurface Resources-->
-  <cylinder id="metal_cylinder" radius="0.01" height="0.2" movable="false">
-      <body position="0,-0.1,-0.063" orientation="-90,0,-90" />
+  <cylinder id="metal_cylinder" radius="0.01" height="0.25" movable="false">
+      <body position="0.125,0,-0.125" orientation="-90,0,-90" />
   </cylinder>
 
 <!--Transmitter Prototype-->
   <prototype id="gpr_transmitter" movable="true">
 
-    <body position = "0.05,0,0" orientation = "0,0,0"/>
+    <body position = "0.1,0.125,0" orientation = "0,0,0"/>
     <controller config="example_controller"/>
 
     <links ref = "base">
@@ -52,7 +52,7 @@
 <!--Receiver Prototype-->
     <prototype id="gpr_receiver" movable="true">
 
-    <body position = "-0.05,0,0" orientation = "0,0,0"/>
+    <body position = "0.14,0.125,0" orientation = "0,0,0"/>
     <controller config="example_controller"/>
 
     <links ref = "base">
