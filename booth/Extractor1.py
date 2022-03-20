@@ -1,4 +1,6 @@
 import xml.etree.ElementTree as ET
+from geometry_conversion import *
+
 
 def getTitle(root):
     for child in root:
@@ -10,9 +12,16 @@ def getTitle(root):
 def getArenaSize(root):
     for child in root:
         if child.tag == 'arena':
-            size=child.attrib['size']
-            return('#domain: ' + size.replace(',',' '))
+            center=child.attrib['size']
+            return('#domain: ' +center.replace(',',' '))
     return None
+    
+def getArenaCenter(root):
+    for child in root:
+        if child.tag == 'arena':
+            size=child.attrib['center']
+            return(size.replace(',',' '))
+    return None    
                  
         
 def getDxDyDz(root):
@@ -94,9 +103,67 @@ def getRx(root):
                 output += proto.find("body").attrib["position"]
         final_output = output.replace(",", " ")
         return final_output
-    
-def fillArena(root):
 
+def getResources(root):
+    resources = root.findall("./gprMax/subsurface_resources/resource")
+    output = ""
+    for resource in resources:
+    	if resource.attrib['argos_id'] == "arena":
+    	    output += getSubsurfaceDomain(root) + resource.attrib['material_id'] + "\n"
+    	else:
+    	    name = resource.attrib['argos_id']
+    	    insert = "@id='"+ name +"'"
+    	    #Get the geometry that has the name of the current resource
+    	    cylinder = root.find("./arena/cylinder["+ insert +"]")
+    	    
+    	    box = root.findall("./arena/box/")
+    	    
+    	    
+    	    #Perform cylinder/box transformation
+    	    if box: 
+    	        print("")
+    	    else:
+    	    	orientation = cylinder.find("./body").attrib["orientation"].split(",")
+    	    	orientation = [float(number) for number in orientation]
+    	    	position = cylinder.find("./body").attrib["position"].split(",")
+    	    	position = [float(number) for number in position]
+    	    	
+    	    	radius = float(cylinder.attrib["radius"])
+    	    	height = float(cylinder.attrib["height"])
+    	    	transform = cylinder_matrix(height, position, orientation)
+    	    	
+    	    	bottom = ' '.join(str(e) for e in transform[0])
+    	    	top = ' '.join(str(e) for e in transform[1])
+    	    	
+    	    	output += "#cylinder: "+bottom +" "+ top +" "+ resource.attrib['material_id'] + "\n"
+    	    #Append data to the output along with resource material ID
+    	    #Make sure to check for "pec" as it doesn't need to be defined in the ARGoS file
+    return output
+
+
+def getSubsurfaceDomain(root):
+    #Get the dimensions of the subsurface domain
+    size_string = getArenaSize(root)
+    size_string = size_string.replace("#domain: ", "" )
+    size_list = size_string.split(" ")
+    
+    center_string = getArenaCenter(root)
+    center_list = center_string.split(" ")
+    
+    #list comprehension to get numbers
+    size = [float(number) for number in size_list]
+    center = [float(number) for number in center_list]
+    subDomain = calculateSubBox(size, center)
+    
+    return (writeBox(subDomain[0], subDomain[1]))
+
+def writeBox(bottom_left, top_right):
+    data = "#box: "
+    for point in bottom_left:
+        data = data + str(point) + ' '
+    for point in top_right:
+        data = data + str(point) + ' '	
+    return data
                         
 def writeInit(root):
     process = [
@@ -107,7 +174,8 @@ def writeInit(root):
         betterMaterials,
         getWaveform,
         getHertzianDipole,
-        getRx
+        getRx,
+        getSubsurfaceDomain
         ]
     data = []
     for function in process:
@@ -122,8 +190,10 @@ def writeInit(root):
         file.write(character)
     file.close()
     return None
-   
-#print(writeInit(getRoot("GPR-antenna.argos")))
+
+#root = getRoot("booth/current-sim.argos")
+#subBox = getSubsurfaceDomain(root)
+#print(getResources(root))
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
 #print(writeInit(getRoot("GPR-antenna.argos")))
