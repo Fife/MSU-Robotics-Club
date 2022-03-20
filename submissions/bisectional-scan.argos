@@ -36,7 +36,7 @@
 <arena size="12, 12,5" center="0,0,0" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
-           path="textures/moon_texture.png" />
+           path="textures/axis.png" />
 
  <box id="wall_north" size="12,0.1,0.1" movable="false">
     <body position="0,6,0" orientation="0,0,0" />

@@ -47,15 +47,14 @@ def betterMaterials(root):
     for material in material_list:
         materials.append(material.attrib)
     
-    output = ""
+    output = "\n"
     for substance in materials:
         output += "#material: "
         output += substance['relative_permittivity'] + " "
         output += substance['conductivity'] + " "
         output += substance['relative_permeability'] + " "
         output += substance['magnetic_loss'] + " "
-        output += substance['id'] + " "
-        output +="\n"
+        output += substance['id'] + "\n"
     return output
 
 
@@ -88,6 +87,7 @@ def getHertzianDipole(root):
                 coordinates = proto.find("body").attrib["position"]
                 coordinates = coordinates.replace(',', ' ')
                 output = output.replace(link, coordinates)
+    output = correctDipole(root, output)
     return output
  
  
@@ -101,43 +101,46 @@ def getRx(root):
             if proto.attrib["id"] == rx_id:
                 #if proto.find("body").attrib["position"] is not None:
                 output += proto.find("body").attrib["position"]
-        final_output = output.replace(",", " ")
+        final_output = correctRx(root, output.replace(",", " "))
         return final_output
 
 def getResources(root):
     resources = root.findall("./gprMax/subsurface_resources/resource")
-    output = ""
+    output = "\n"
     for resource in resources:
     	if resource.attrib['argos_id'] == "arena":
-    	    output += getSubsurfaceDomain(root) + resource.attrib['material_id'] + "\n"
+    	    arena = getSubsurfaceDomain(root)
+    	    output += correctCube(root, arena) + resource.attrib['material_id'] + "\n"
     	else:
     	    name = resource.attrib['argos_id']
     	    insert = "@id='"+ name +"'"
     	    #Get the geometry that has the name of the current resource
     	    cylinder = root.find("./arena/cylinder["+ insert +"]")
-    	    
     	    box = root.findall("./arena/box/")
-    	    
-    	    
     	    #Perform cylinder/box transformation
     	    if box: 
-    	        print("")
+    	        position = box.find("./body").attrib["position"].split(",")
+    	        position = [float(number) for number in position]
+    	        size = box.attrib["size"].split(",")
+    	        size = [float(number) for number in size]
+    	        transform = cube_matrix(size, position)
+    	        bottom = ' '.join(str(e) for e in transform[0])
+    	        top = ' '.join(str(e) for e in transform[1])
+    	        line = "#box: "+bottom +" "+ top 
+    	        output += correctCube(root, line)+" "+ resource.attrib['material_id'] + "\n"
     	    else:
     	    	orientation = cylinder.find("./body").attrib["orientation"].split(",")
     	    	orientation = [float(number) for number in orientation]
     	    	position = cylinder.find("./body").attrib["position"].split(",")
     	    	position = [float(number) for number in position]
-    	    	
-    	    	radius = float(cylinder.attrib["radius"])
+    	    	radius = cylinder.attrib["radius"]
     	    	height = float(cylinder.attrib["height"])
     	    	transform = cylinder_matrix(height, position, orientation)
     	    	
     	    	bottom = ' '.join(str(e) for e in transform[0])
     	    	top = ' '.join(str(e) for e in transform[1])
-    	    	
-    	    	output += "#cylinder: "+bottom +" "+ top +" "+ resource.attrib['material_id'] + "\n"
-    	    #Append data to the output along with resource material ID
-    	    #Make sure to check for "pec" as it doesn't need to be defined in the ARGoS file
+    	    	line = "#cylinder: "+bottom +" "+ top +" "+ radius + " "+ resource.attrib['material_id']
+    	    	output += correctCylinder(root, line)+ "\n"
     return output
 
 
@@ -157,6 +160,21 @@ def getSubsurfaceDomain(root):
     
     return (writeBox(subDomain[0], subDomain[1]))
 
+def getSubsurfaceBias(root):
+    #Get the dimensions of the subsurface domain
+    size_string = getArenaSize(root)
+    size_string = size_string.replace("#domain: ", "" )
+    size_list = size_string.split(" ")
+    
+    center_string = getArenaCenter(root)
+    center_list = center_string.split(" ")
+    
+    #list comprehension to get numbers
+    size = [float(number) for number in size_list]
+    center = [float(number) for number in center_list]
+    subDomain = calculateSubBox(size, center)
+    return subDomain[0]
+    
 def writeBox(bottom_left, top_right):
     data = "#box: "
     for point in bottom_left:
@@ -164,6 +182,99 @@ def writeBox(bottom_left, top_right):
     for point in top_right:
         data = data + str(point) + ' '	
     return data
+
+def correctRx(root, str_input):
+    #get the input and bias point
+    bias_point = getSubsurfaceBias(root)
+    line_list = str_input.split(' ')
+    rx = line_list[0]
+    args = ''
+    if len(line_list) > 4:
+    	args = ' '.join(str(e) for e in line_list[3:])
+    point_list = line_list[1:4]
+    
+    #cast the points to float and split them so that we can do math 
+    point_list = [float(entry) for entry in point_list]
+    
+    biased_rx = offsetCorrect(point_list, bias_point)
+    points =' '.join(str(e) for e in biased_rx)
+    output = rx + ' ' + points + args
+    return output
+    
+def correctDipole(root, str_input):
+    #get the input and bias point
+    bias_point = getSubsurfaceBias(root)
+    line_list = str_input.split(' ')
+    pre_args = ' '.join(str(e) for e in line_list[:3])
+    post_args = ' '.join(str(e) for e in line_list[5:])
+    point_list = line_list[2:5]
+    
+    #cast the points to float and split them so that we can do math 
+    point_list = [float(entry) for entry in point_list]
+    
+    biased_rx = offsetCorrect(point_list, bias_point)
+    points =' '.join(str(e) for e in biased_rx)
+    output = pre_args + ' ' + points + ' ' + post_args
+    return output    
+    
+
+def correctCube(root, str_input):
+    #get the input and bias point
+    bias_point = getSubsurfaceBias(root)
+    line_list = str_input.split(' ')
+    
+    #save the geometry type and material for later
+    material = ' '.join(line_list[7:])
+    geometry = line_list[0]
+    line_list = line_list[1:7]
+    
+    #cast the points to float and split them so that we can do math 
+    point_list = [float(entry) for entry in line_list]
+    bottom = point_list[0:3]
+    top = point_list[3:6]
+    
+    #Create New Points
+    biased_geometry = [offsetCorrect(bottom,bias_point), offsetCorrect(top,bias_point)]
+    
+    #output back as a string in the gprmax format
+    bl = [str(entry) for entry in biased_geometry[0]]
+    tr = [str(entry) for entry in biased_geometry[1]]
+    
+    out_list = bl+tr
+    out_list.insert(0, geometry)
+    out_list.append(material)
+    output = ' '.join(str(e) for e in out_list)
+
+    return output
+   
+def correctCylinder(root, str_input):
+    #get the input and bias point
+    bias_point = getSubsurfaceBias(root)
+    line_list = str_input.split(' ')
+    
+    #save the geometry type and material for later
+    material = ' '.join(line_list[7:])
+    geometry = line_list[0]
+    line_list = line_list[1:7]
+    
+    #cast the points to float and split them so that we can do math 
+    point_list = [float(entry) for entry in line_list]
+    bottom = point_list[0:3]
+    top = point_list[3:6]
+    
+    #Create New Points
+    biased_geometry = offsetCorrect(bottom,bias_point) + offsetCorrect(top,bias_point)
+    biased_geometry = [round(i, 4) for i in biased_geometry]
+        
+    #output back as a string in the gprmax format
+    
+    out_list = biased_geometry
+    out_list.insert(0, geometry)
+    out_list.append(material)
+    output = ' '.join(str(e) for e in out_list)
+
+    return output
+            
                         
 def writeInit(root):
     process = [
@@ -175,7 +286,7 @@ def writeInit(root):
         getWaveform,
         getHertzianDipole,
         getRx,
-        getSubsurfaceDomain
+        getResources
         ]
     data = []
     for function in process:
@@ -191,9 +302,10 @@ def writeInit(root):
     file.close()
     return None
 
-#root = getRoot("booth/current-sim.argos")
-#subBox = getSubsurfaceDomain(root)
-#print(getResources(root))
+root = getRoot("booth/current-sim.argos")
+
+
+writeInit(root)
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
 #print(writeInit(getRoot("GPR-antenna.argos")))

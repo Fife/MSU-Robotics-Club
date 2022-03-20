@@ -56,24 +56,19 @@ def cylinder_matrix(height, origin, rotation):
         bottom = origin
         top = [origin[0], origin[1], origin[2]+height]
     
-    #Find center for offsetting
-    center = [(top[0]+bottom[0])/2,
-              (top[1]+bottom[1])/2,
-              (top[2]+bottom[2])/2]
-    
     #Normalize points
-    normalized_top = offsetCorrect(top, center)
-    normalized_bottom = offsetCorrect(bottom, center)
+    normalized_top = offsetCorrect(top, bottom)
+    normalized_bottom = offsetCorrect(bottom, bottom)
+    
     
     #Rotate
     rot_norm_top = rotate_zyx(normalized_top, rotation)
-    rot_norm_bottom = rotate_zyx(normalized_top, rotation)
-    
+    rot_norm_bottom = rotate_zyx(normalized_bottom, rotation)
     
     #Re-Apply Offset
-    bottom_out = addOffset(center, rot_norm_bottom)
-    top_out = addOffset(center, rot_norm_top)
-    return(bottom, top)
+    bottom_out = addOffset(bottom, rot_norm_bottom)
+    top_out = addOffset(bottom, rot_norm_top)
+    return(bottom_out, top_out)
 
 def rotate_x(point, angle):
     theta = np.radians(angle)
