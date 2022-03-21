@@ -1,8 +1,9 @@
 require ('movement-functions')
+require ('gprMaxInterface')
 
 -- Use Shift + Click to select a robot
 -- When a robot is selected, its variables appear in this editor
-
+local experiment_path = "submissions/bisectional-scan.argos"
 local flag = false
 
 function tablelength(T)
@@ -24,6 +25,7 @@ function init()
    -- put your code here
 	target = 1
 	current_target = point_list[target]
+   gpr_init(experiment_path)
 end
 
 

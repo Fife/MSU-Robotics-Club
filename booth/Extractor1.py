@@ -149,12 +149,12 @@ def getSubsurfaceDomain(root):
     size_string = getArenaSize(root)
     size_string = size_string.replace("#domain: ", "" )
     size_list = size_string.split(" ")
-    
+    print(size_list)
     center_string = getArenaCenter(root)
     center_list = center_string.split(" ")
     
     #list comprehension to get numbers
-    size = [float(number) for number in size_list]
+    size = [float(number) for number in size_list if number != " "]
     center = [float(number) for number in center_list]
     subDomain = calculateSubBox(size, center)
     
@@ -174,7 +174,8 @@ def getSubsurfaceBias(root):
     center = [float(number) for number in center_list]
     subDomain = calculateSubBox(size, center)
     return subDomain[0]
-    
+
+        
 def writeBox(bottom_left, top_right):
     data = "#box: "
     for point in bottom_left:
@@ -205,10 +206,10 @@ def correctDipole(root, str_input):
     #get the input and bias point
     bias_point = getSubsurfaceBias(root)
     line_list = str_input.split(' ')
-    pre_args = ' '.join(str(e) for e in line_list[:3])
+    pre_args = ' '.join(str(e) for e in line_list[:2])
     post_args = ' '.join(str(e) for e in line_list[5:])
     point_list = line_list[2:5]
-    
+
     #cast the points to float and split them so that we can do math 
     point_list = [float(entry) for entry in point_list]
     
@@ -302,10 +303,11 @@ def writeInit(root):
     file.close()
     return None
 
-root = getRoot("booth/current-sim.argos")
-
-
-writeInit(root)
+#root = getRoot("submissions/bisectional-scan.argos")
+#print(getSubsurfaceDomain(root))
+#print(getHertzianDipole(root))
+#print(correctDipole(root, getHertzianDipole(root)))
+#writeInit(root)
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
 #print(writeInit(getRoot("GPR-antenna.argos")))

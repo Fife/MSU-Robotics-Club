@@ -33,7 +33,7 @@
 </controllers>
 
 
-<arena size="12, 12,5" center="0,0,0" positional_grid_size="1, 1, 1">
+<arena size="12,12,5" center="0,0,0" positional_grid_size="1, 1, 1">
     <floor id="floor"
            source="image"
            path="textures/axis.png" />
@@ -51,7 +51,7 @@
     <body position="-6,0,0" orientation="0,0,0" />
   </box>
   
-  <box id="subsurface_cube" size="3,2,1" movable="false">
+  <box id="subsurface_box" size="3,2,1" movable="false">
     <body position="-2,-2,-1.5" orientation="0,0,0" />
   </box>
   
@@ -65,7 +65,7 @@
 
   <prototype id="gpr-bot" movable="true">
   
-    <body position = "-4,-4, 0" orientation = "0,0,0"/>
+    <body position = "-4,-4,0" orientation = "0,0,0"/>
     <controller config="gpr-bot"/>
     <links ref = "base">
       <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.11" orientation="0,0,0"/>
@@ -164,4 +164,51 @@
       </camera>
     </qt-opengl>
   </visualization>
+  
+    <gprMax title="Antenna_Test">
+  <!--
+    gprMax Essential commands
+    These commands are essential for gprMax to run.
+  -->
+  <gpr_essential domain="arena" dx_dy_dz="0.002, 0.002, 0.002" time_window="3e-9"/>
+
+  <!--
+    The gpr_medium tag determines what material the subsurace objects are buried in. 
+  -->
+  <gpr_medium material_id="half_space"/>
+
+  <!--
+    The materials tag contains a list of user defined materials. 
+  -->
+  <materials>
+    <!--
+    Possible Future Materials
+
+    <material id="my_sand" relative_permittivity="3" conductivity="0.01" relative_permeability="1" magnetic_loss="0"/>
+    <material id="my_gold" relative_permittivity="1" conductivity="44.6e6" relative_permeability="1" magnetic_loss="0"/>
+    -->
+    <material id="half_space" relative_permittivity="6" conductivity="0" relative_permeability="1" magnetic_loss="0"/>
+  </materials>
+
+  <!--
+    The waveform tag contains information about a user described waveform pattern. 
+  -->
+  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
+
+  <hertzian_dipole polarization="y" link_id="gpr-bot" waveform="my_ricker" />
+  
+  <rx id="gpr-bot"/>
+
+  <!--
+    The subsurface_resources tag is used to map the dimensions and orientation of argos geometry to the user defined gprMax materials. 
+  -->
+  <subsurface_resources>
+    <resource argos_id="subsurface_cylinder" material_id="pec"/>
+    <resource argos_id="subsurface_cylinder2" material_id="pec"/>
+    <resource argos_id="subsurface_box" material_id="pec"/>
+    <resource argos_id="arena" material_id="half_space"/>
+  </subsurface_resources>
+
+</gprMax>
+  
 </argos-configuration>
