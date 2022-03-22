@@ -5,4 +5,4 @@
 #material: 6 0 1 0 half_space 
 
 #waveform: ricker 1 1.5e9 my_ricker 
-#hertzian_dipole: z my_ricker 0.05 0 0
+#hertzian_dipole: z 0.15 4.2 1.52 0

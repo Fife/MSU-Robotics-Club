@@ -36,7 +36,6 @@ def replaceTx(Tx, Ty, Tz, transmitter):
     transmitter[2] = str(Tx)
     transmitter[3] = str(Ty)
     transmitter[4] = str(Tz)
-    transmitter.append("\n")
     new_output = ' '.join(transmitter)
     return new_output
 
@@ -45,16 +44,16 @@ def replaceRx(Rx, Ry, Rz, receiver):
     receiver[1] = str(Rx)
     receiver[2] = str(Ry)
     receiver[3] = str(Rz)
-    receiver.append("\n")
     new_output = ' '.join(receiver)
     return new_output
 
 def trxUpdateTest():
-    file_path = 'cylinder_Ascan_2D.in'
+    file_path = 'current-sim.in'
     updateTRx(file_path, 0.15,4.20,1.52, 0,0,0)
 
-    myString = "#hertzian_dipole: z 0.100 0.170 0 my_ricker"
-    myRec = "#rx: 0.140 0.170 0"
+    myString = "#hertzian_dipole: z 0.100 0.170 0 my_ricker\n"
+    myRec = "#rx: 0.140 0.170 0\n"
 
     print(replaceTx(0,0,0, myString))
     print(replaceRx(0,0,0, myRec))
+

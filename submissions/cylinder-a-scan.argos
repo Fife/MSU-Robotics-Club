@@ -121,9 +121,9 @@
   <!--
     The waveform tag contains information about a user described waveform pattern. 
   -->
-  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
+  <waveform id= "my_sine" type="sine" max_amplitude="1" center_freq="1.5e9"/>
 
-  <hertzian_dipole polarization="y" link_id="gpr_transmitter" waveform="my_ricker" />
+  <hertzian_dipole polarization="z" link_id="gpr_transmitter" waveform="my_sine" />
   
   <rx id="gpr_receiver"/>
 
