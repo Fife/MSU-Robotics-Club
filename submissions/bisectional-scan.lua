@@ -21,8 +21,8 @@ local displacement = 0
 --[[ This function is executed every time you press the 'execute' button ]]
 function init()
 	target = 1
-	current_target = point_list[target]
-   gpr_init(experiment_path)
+    current_target = point_list[target]
+	gpr_init(experiment_path)
 end
 
 

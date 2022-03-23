@@ -81,8 +81,6 @@ function driveTo(x,y, forward_velocity)
 	--This angle will always be between 0-180
 	local dot_p = face_vector_cart[1]*traj_vector_cart[1] + face_vector_cart[2]*traj_vector_cart[2]
 	local a = math.deg((math.acos(dot_p/traj_magnitude)))
-	
-	
 
 	log("Angle between :" .. a)
 	--log("Cross Product:" .. cross_p)
