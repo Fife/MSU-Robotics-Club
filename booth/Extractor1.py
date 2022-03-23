@@ -116,7 +116,7 @@ def getResources(root):
     	    insert = "@id='"+ name +"'"
     	    #Get the geometry that has the name of the current resource
     	    cylinder = root.find("./arena/cylinder["+ insert +"]")
-    	    box = root.findall("./arena/box/")
+    	    box = root.find("./arena/box/["+ insert + "]")
     	    #Perform cylinder/box transformation
     	    if box: 
     	        position = box.find("./body").attrib["position"].split(",")
@@ -307,6 +307,7 @@ def writeInit(root):
 #print(getSubsurfaceDomain(root))
 #print(getHertzianDipole(root))
 #print(correctDipole(root, getHertzianDipole(root)))
+#print(getResources(root))
 #writeInit(root)
 #waveform=getWaveform(root)
 #gprWaveform='#waveform: ' + waveform
