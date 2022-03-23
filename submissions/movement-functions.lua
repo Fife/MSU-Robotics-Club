@@ -33,20 +33,7 @@ function reverse(velocity)
     robot.joints.base_wheel_fr.set_target(velocity)
 end
 
-function driveTo(x,y, forward_velocity)
-	--get x and y of robot
-	local current_x= robot.positioning.position.x
-	local current_y= robot.positioning.position.y
-	--create cartesian trajectory vector table
-
-
-	local traj_vector_cart = {x - current_x, y - current_y}
-	
-	--calculate magnitude of trajectory
-	local sum_of_squares=math.pow((x - current_x),2)+math.pow((y - current_y),2)
-
-	local traj_magnitude=math.sqrt(sum_of_squares)	
-
+function getYaw()
 	local w = robot.positioning.orientation.w
 	local x = robot.positioning.orientation.x
 	local y = robot.positioning.orientation.y
@@ -60,7 +47,25 @@ function driveTo(x,y, forward_velocity)
 	end
 	yaw = yaw * math.pi/180
 	--convert quarternion to z rotation
-	local current_angle= yaw
+	return yaw
+
+
+function driveTo(x,y, forward_velocity)
+	local isTurning
+	--get x and y of robot
+	local current_x= robot.positioning.position.x
+	local current_y= robot.positioning.position.y
+	--create cartesian trajectory vector table
+
+
+	local traj_vector_cart = {x - current_x, y - current_y}
+	
+	--calculate magnitude of trajectory
+	local sum_of_squares=math.pow((x - current_x),2)+math.pow((y - current_y),2)
+
+	local traj_magnitude=math.sqrt(sum_of_squares)	
+	--convert quarternion to z rotation
+	local current_angle = getYaw()
 
 	--create cartesian face vector 
 
@@ -87,13 +92,22 @@ function driveTo(x,y, forward_velocity)
 	
 	if cross_p < -0.02 then
 		turnLeft(speed_ratio/2)
+		isTurning = true
 	
 	elseif cross_p > 0.02 then 
 		turnRight(speed_ratio/2)
-	
+		isTurning = false
 	else
 		if a < 0.5 then
 				driveForward(forward_velocity)		
 		end
 	end
+	return isTurning
 end
+
+
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+  end
