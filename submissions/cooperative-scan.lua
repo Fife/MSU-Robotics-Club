@@ -34,9 +34,6 @@ function init()
 		current_path = generatePath(field[4]["bl"], 10, 2 ,2)
    	current_target = current_path[target]
 	end
-   log(robot.id)
-	log(current_target[1])
-	log(current_target[2])
 end
 
 
@@ -44,6 +41,9 @@ end
      It must contain the logic of your controller ]]
 function step()
 	--Navigation Logic
+	log(robot.id)
+	log(current_target[1])
+	log(current_target[2])
 	current_x= robot.positioning.position.x
 	current_y= robot.positioning.position.y
 	local sum_of_squares=math.pow((current_target[1] - current_x),2)+math.pow((current_target[2] - current_y),2)
@@ -60,4 +60,8 @@ function step()
 			current_target = current_path[target]
 		end
 	end
+end
+
+function reset()
+	init()
 end
