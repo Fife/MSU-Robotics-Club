@@ -1,6 +1,7 @@
 require("gprMaxInterface")
 local sh = require ('sh')
 local experiment_path = "submissions/cylinder-a-scan.argos"
+local output_path = "submissions/cylinder-a-scan"
 
 -- Put your global variables here
 
@@ -8,7 +9,7 @@ local experiment_path = "submissions/cylinder-a-scan.argos"
 --[[ This function is executed every time you press the 'execute' button ]]
 function init()
    -- put your code here
-	gpr_init(experiment_path)
+	gpr_initShot(experiment_path, output_path)
 
 end
 

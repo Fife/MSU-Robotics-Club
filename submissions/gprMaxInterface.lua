@@ -11,6 +11,7 @@ local file_counter = 0
 local mkdir = sh.command('mkdir')
 
 function gpr_init(argos_exp_path, output_folder)
+  file_counter = 0
   --Copy file over to the booth
   cp(argos_exp_path,"booth/current-sim.argos")
   log(output_folder)
@@ -43,6 +44,21 @@ function gpr_step(Tx, Rx, output_folder)
   
   --Copy Results to results folder
   --cp("booth/current-sim.out", output_path)
+end
+
+function gpr_initShot(argos_exp_path, output_folder)
+  --Copy file over to the booth
+  cp(argos_exp_path,"booth/current-sim.argos")
+  --make output directory
+  mkdir(output_folder)
+  
+  --Launch python script to generate the gprMax ".in" file
+  python(in_generator, "booth/current-sim.argos")
+  local output_path = output_folder .. "/" .. tostring(file_counter) .. ".in"
+  cp("booth/current-sim.in", output_path)
+  --python("booth/launchgpr.py","booth/current-sim.in")
+  
+ 
 end
 
 function gpr_reset()
