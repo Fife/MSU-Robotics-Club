@@ -48,10 +48,10 @@ function getYaw()
 	yaw = yaw * math.pi/180
 	--convert quarternion to z rotation
 	return yaw
-
+end
 
 function driveTo(x,y, forward_velocity)
-	local isTurning
+	local isTurning = true
 	--get x and y of robot
 	local current_x= robot.positioning.position.x
 	local current_y= robot.positioning.position.y
@@ -81,10 +81,10 @@ function driveTo(x,y, forward_velocity)
 	--This angle will always be between 0-180
 	local dot_p = face_vector_cart[1]*traj_vector_cart[1] + face_vector_cart[2]*traj_vector_cart[2]
 	local a = math.deg((math.acos(dot_p/traj_magnitude)))
-
-	log("Angle between :" .. a)
+	--log(tostring(isTurning))
+	--log("Angle between :" .. a)
 	--log("Cross Product:" .. cross_p)
-	log("Face Angle " .. current_angle)
+	--log("Face Angle " .. current_angle)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
 	local speed_ratio = 10 
 	
@@ -94,12 +94,14 @@ function driveTo(x,y, forward_velocity)
 	
 	elseif cross_p > 0.02 then 
 		turnRight(speed_ratio/2)
-		isTurning = false
+		isTurning = true
 	else
 		if a < 0.5 then
-				driveForward(forward_velocity)		
+			driveForward(forward_velocity)
+			isTurning = false		
 		end
 	end
+	--log(tostring(isTurning))
 	return isTurning
 end
 
@@ -108,6 +110,7 @@ function tablelength(T)
 	for _ in pairs(T) do count = count + 1 end
 	return count
   end
+
 
 function generatePath(bottom_left, length, width, offset)
 	local travel_path = {}

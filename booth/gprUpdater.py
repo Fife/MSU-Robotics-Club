@@ -1,5 +1,5 @@
 import getopt
-from gpr_updater import * 
+from gprUpdateFunctions import * 
 
 file_path = sys.argv[1]   # Path to .in file
 Transmitter = sys.argv[2] # Transmitter coordinates in form x, y, z as "0 0 0"

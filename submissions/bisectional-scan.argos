@@ -56,7 +56,7 @@
   </box>
   
   <cylinder id="subsurface_cylinder" radius="1" height="1.0" movable="false">
-    <body position="2,0,-3" orientation="0,0,0" />
+    <body position="2,0,-1.2" orientation="0,0,0" />
   </cylinder>
   
   <cylinder id="subsurface_cylinder2" radius="0.5" height="0.75" movable="false">
@@ -170,7 +170,7 @@
     gprMax Essential commands
     These commands are essential for gprMax to run.
   -->
-  <gpr_essential domain="arena" dx_dy_dz="0.02, 0.02, 0.02" time_window="10e-8"/>
+  <gpr_essential domain="arena" dx_dy_dz="0.1, 0.1, 0.1" time_window="10e-7"/>
 
   <!--
     The gpr_medium tag determines what material the subsurace objects are buried in. 
@@ -193,7 +193,7 @@
   <!--
     The waveform tag contains information about a user described waveform pattern. 
   -->
-  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1e8"/>
+  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1e7"/>
 
   <hertzian_dipole polarization="z" link_id="gpr-bot" waveform="my_ricker" />
   

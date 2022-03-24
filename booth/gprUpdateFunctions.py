@@ -1,26 +1,35 @@
 import fileinput
 import sys
+from Extractor1 import * 
 
 def updateTRx(file_path, Tx, Ty, Tz, Rx, Ry, Rz):
-    
+    root = getRoot("booth/current-sim.argos")
+
     #Open the file at the specified path and read it in to a variable
-    file = open(file_path, "r")
-    file_content = file.readlines()
+    exp_file = open(file_path, "r")
+    file_content = exp_file.readlines()
     
     #Create an empty list to store the modified file
     updated_file=[]
     
+    #Bias The points
+    bias = getSubsurfaceBias(root) 
+    biased_Tx = offsetCorrect([float(Tx), float(Ty), float(Tz)], bias)
+    biased_Rx = offsetCorrect([float(Rx), float(Ry), float(Rz)], bias)
+    
     #Loop through to find the line of the Transmitter and write the updated line to the new file
     for line in file_content:
         if "#hertzian_dipole" in line:
-            new_output = replaceTx(Tx, Ty, Tz, line)
+            new_output = replaceTx(biased_Tx[0], biased_Tx[1], biased_Tx[2], line)
             updated_file.append(new_output)
+            updated_file.append("\n")
         elif "#rx" in line:
-            new_output = replaceRx(Rx, Ry, Rz, line)
+            new_output = replaceRx(biased_Rx[0], biased_Rx[1], biased_Rx[2], line)
             updated_file.append(new_output)
+            updated_file.append("\n")
         else:
             updated_file.append(line)
-    file.close()
+    exp_file.close()
     
     #Join the list of lines into one big line
     final_output = ''.join(updated_file)
