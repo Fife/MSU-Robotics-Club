@@ -11,6 +11,7 @@
 <controllers>
   <lua_controller id="gpr-bot">
     <actuators>
+    	<radios implementation="default" medium="radios" />
         <joints implementation="default">
          <joint id="freel" mode="velocity" max_impulse="0.05f"/>
          <joint id="fleel" mode="velocity" max_impulse="0.05f"/>
@@ -20,6 +21,7 @@
     </actuators>
 
     <sensors>
+    <radios implementation="default" medium= "rads" show_rays="true" />    
       <joints implementation="default">
         <joint id="freel" mode="velocity"/>
         <joint id="fleel" mode="velocity"/>
@@ -51,9 +53,12 @@
     <body position="-18,0,0" orientation="0,0,0" />
   </box>
 
-  <prototype id="gpr-bot" movable="true">
+    <distribute>
+        <position method="uniform" min="-16,-16,0" max="-8,-8,0" />
+        <orientation method="gaussian" mean="0,0,0" std_dev="0,0,0" />
+        <entity quantity="3" max_trials="100">
+        <prototype id="gpr-bot" movable="true">
   
-    <body position = "-4,-4,0" orientation = "0,0,0"/>
     <controller config="gpr-bot"/>
     <links ref = "base">
       <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.11" orientation="0,0,0"/>
@@ -124,18 +129,17 @@
         <parent link="axle_bl" position="0,0,0.2" orientation="0,0,0"/>
         <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
     </joint>
-      
     </joints>
-  </prototype>
-
-    <distribute>
-        <position method="uniform" min="-18,-18,0" max="-8,-8,0" />
-        <orientation method="gaussian" mean="0,0,0" std_dev="0,0,0" />
-        <entity quantity="3" max_trials="100">
-        <prototype id="gpr-bot">
-            <controller config="gpr-bot" />
-        </foot-bot>
-        </entity>
+    
+    <devices>
+ 	<radios medium ="radios">
+ 		<radio id="radio_rx" anchor ="base" range ="20" position =".05 ,0 ,.0125"/>
+ 		<radio id="radio_tx" anchor ="base" range ="20" position =" -.05 ,0 ,.0125"/>
+ 	</radios>
+    </devices>
+    
+        </prototype>
+       </entity>
     </distribute>
 
   </arena>
@@ -147,13 +151,15 @@
     </dynamics3d>
   </physics_engines>
 
-  <media />
+  <media>     	
+  	<radio id="radios" />
+  </media>
 
   <visualization>
     <qt-opengl lua_editor="true">
       <camera>
         <placements>
-          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="60" />
+          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="5" />
         </placements>
       </camera>
     </qt-opengl>
