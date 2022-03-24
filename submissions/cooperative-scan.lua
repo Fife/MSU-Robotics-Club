@@ -10,9 +10,7 @@ local flag = false
 -- Put your global variables here
 
 local target = 1
-local point_list = {{-4,-4},{4,-4},{4,-2},{-4,-2},{-4,0},{4,0},{4,2},{-4,2},{-4,4},{4,4},{4,-4},{2,-4},{2,4},{0,4},{0,-4},{-2,-4},{-2,4},{-4,4},{-4,-4}}
-local current_target = point_list[target]
-local table_length = tablelength(point_list)
+local current_target
 local current_x= robot.positioning.position.x
 local current_y= robot.positioning.position.y
 local last_x = current_x
@@ -20,12 +18,25 @@ local last_y = current_y
 local disp = 0
 local lastTurn = false
 local isTurning = false
-local field = chunk()
+
+local field = chunk(36,36,3, {0,0})
 
 --[[ This function is executed every time you press the 'execute' button ]]
 function init()
 	target = 1
-   current_target = point_list[target]
+	if robot.id == "gpr-bot2" then
+		current_path = generatePath(field[1]["bl"], 10, 2 ,2)
+   	current_target = current_path[target]
+	elseif robot.id == "gpr-bot1" then
+		current_path = generatePath(field[2]["bl"], 10, 2 ,2)
+   	current_target = current_path[target]
+	elseif robot.id == "gpr-bot0" then
+		current_path = generatePath(field[4]["bl"], 10, 2 ,2)
+   	current_target = current_path[target]
+	end
+   log(robot.id)
+	log(current_target[1])
+	log(current_target[2])
 end
 
 
@@ -41,30 +52,12 @@ function step()
 	if (traj_magnitude > 0.1) then
 		isTurning = driveTo(current_target[1],current_target[2], 5)
 	else
-		if target + 1 > table_length then
+		if target + 1 > tablelength(current_path) then
 			log("All Points Passed Through")
 			driveForward(0)
 		else
 			target = target+1
-			current_target = point_list[target]
+			current_target = current_path[target]
 		end
 	end
-	--GPR Logic 
-
-	if disp >= 1 then 
-		log("GPR Snapshot at " .. tostring(current_x) .. " " .. tostring(current_y) )
-		disp = 0
-		last_x = current_x
-		last_y = current_y
-		local sensors = getSensorPos(0.01)
-		--gpr_step(sensors[1], sensors[2], output_folder)
-	elseif (isTurning == true and lastTurn == true) then
-		disp = 0
-		last_x = current_x
-		last_y = current_y
-	else
-		--log("Adding to Displacement")
-		disp = (math.pow((robot.positioning.position.x - last_x),2)+  math.pow((robot.positioning.position.y - last_y),2))
-	end
-	lastTurn = isTurning
 end

@@ -4,7 +4,7 @@
 
 <framework>
 	<experiment length ="0"
-		    ticks_per_second="24"
+		    ticks_per_second="80"
         random_seed= "0"/>
 </framework>
 
