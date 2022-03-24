@@ -1,7 +1,7 @@
 require("gprMaxInterface")
 local sh = require ('sh')
 local experiment_path = "submissions/cylinder-a-scan.argos"
-local output_path = "submissions/cylinder-a-scan"
+local output_path = "submissions/cylinder-a-scan-output"
 
 -- Put your global variables here
 
