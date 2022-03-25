@@ -36,3 +36,27 @@ function chunk(xLength, yLength, numSqr, center)
    end
    return squareList
 end
+
+function shortestDistance(x, y)
+    local distanceList = {}
+
+    for k = 1, #fieldStatus, 1 do
+        if fieldStatus[k] == false then
+            xfieldval = field[k]["bl"]["x"]
+            yfieldval = field[k]["bl"]["y"]
+            distance = math.sqrt((xfieldval-x)^2 + (yfieldval-y)^2)
+            table.insert(distanceList, {key=k, val=distance})
+        end
+    end
+    
+    local square
+    local minimum = math.huge
+
+    for i=1, #distanceList, 1 do
+        if distanceList[i]["val"] < minimum then
+            square = distanceList[i]["key"]
+            minimum = distanceList[i]["val"]
+        end
+    end
+    return square
+end
