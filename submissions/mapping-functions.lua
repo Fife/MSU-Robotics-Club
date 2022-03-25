@@ -15,21 +15,6 @@ function generatePath(bottom_left, length, width, offset)
 			y = y + width
 			table.insert(travel_path,{x, y})
 	end
-	x = x + length
-	table.insert(travel_path,{x, y})
-	for i = 1,(length/(2*width)), 1 
-		do 
-			y = y - length
-			table.insert(travel_path,{x, y})
-			x = x - width
-			table.insert(travel_path,{x, y})
-			y = y + length
-			table.insert(travel_path,{x, y})
-			x = x - width
-			table.insert(travel_path,{x, y})
-	end
-	y = y - length
-	table.insert(travel_path, {x, y})
 	return travel_path
 end
 
