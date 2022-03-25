@@ -27,7 +27,7 @@
 
 <!--Arena Configuration-->
 
-<arena size="0.25,0.25,0.25" center="0,0,-0.05" positional_grid_size="1, 1, 1">
+<arena size="0.25,0.002,0.25" center="0,0,-0.05" positional_grid_size="1, 1, 1">
 <!--Arena Walls-->
     <floor id="floor"
            source="image"
@@ -36,8 +36,8 @@
 <!--Robots-->
 
 <!--Subsurface Resources-->
-  <cylinder id="metal_cylinder" radius="0.01" height="0.25" movable="false">
-      <body position="0,-0.125,-0.125" orientation="0,0,-90" />
+  <cylinder id="metal_cylinder" radius="0.01" height="0.002" movable="false">
+      <body position="0,-0.001,-0.125" orientation="0,0,-90" />
   </cylinder>-
 
 <!--Transmitter Prototype-->
@@ -47,7 +47,7 @@
     <controller config="example_controller"/>
 
     <links ref = "base">
-      <link id="base" geometry="box" size="0.01,0.01,0.01" mass="0.1" position="0,0,0" orientation="0,0,0"/>
+      <link id="base" geometry="box" size="0.001,0.001,0.001" mass="0.1" position="0,0,0" orientation="0,0,0"/>
     </links>
 
   </prototype>
@@ -59,7 +59,7 @@
     <controller config="example_controller"/>
 
     <links ref = "base">
-      <link id="base" geometry="box" size="0.01,0.01,0.01" mass="0.1" position="0,0,0" orientation="0,0,0"/>
+      <link id="base" geometry="box" size="0.001,0.001,0.001" mass="0.1" position="0,0,0" orientation="0,0,0"/>
     </links>
 
   </prototype>
@@ -121,9 +121,9 @@
   <!--
     The waveform tag contains information about a user described waveform pattern. 
   -->
-  <waveform id= "my_sine" type="sine" max_amplitude="1" center_freq="1.5e9"/>
+  <waveform id= "my_ricker" type="ricker" max_amplitude="1" center_freq="1.5e9"/>
 
-  <hertzian_dipole polarization="z" link_id="gpr_transmitter" waveform="my_sine" />
+  <hertzian_dipole polarization="y" link_id="gpr_transmitter" waveform="my_ricker" />
   
   <rx id="gpr_receiver"/>
 
