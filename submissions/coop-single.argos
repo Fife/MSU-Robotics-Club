@@ -56,7 +56,7 @@
     <distribute>
         <position method="uniform" min="-16,-16,0" max="-8,-8,0" />
         <orientation method="gaussian" mean="0,0,0" std_dev="0,0,0" />
-        <entity quantity="3" max_trials="100">
+        <entity quantity="1" max_trials="100">
         <prototype id="gpr-bot" movable="true">
   
     <controller config="gpr-bot"/>

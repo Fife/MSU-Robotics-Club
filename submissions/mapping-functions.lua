@@ -15,6 +15,64 @@ function generatePath(bottom_left, length, width, offset)
 			y = y + width
 			table.insert(travel_path,{x, y})
 	end
+	x = x + length
+	table.insert(travel_path,{x, y})
+	for i = 1,(length/(2*width)), 1 
+		do 
+			y = y - length
+			table.insert(travel_path,{x, y})
+			x = x - width
+			table.insert(travel_path,{x, y})
+			y = y + length
+			table.insert(travel_path,{x, y})
+			x = x - width
+			table.insert(travel_path,{x, y})
+	end
+	y = y - length
+	table.insert(travel_path,{x, y})
+	return travel_path
+end
+
+function generateLargePath(bottom_left, length, width, offset)
+	local travel_path = {}
+	local start = {bottom_left["x"]+offset, bottom_left["y"]+offset}
+	local x = start[1]
+	local y = start[2]
+	table.insert(travel_path, start)
+	for i = 1,(length/(2*width)), 1 
+		do 
+			x = x + length/2
+			table.insert(travel_path,{x, y})
+			x = x + length/2
+			table.insert(travel_path,{x, y})
+			y = y + width
+			table.insert(travel_path,{x, y})
+			x = x - length/2
+			table.insert(travel_path,{x, y})
+			x = x - length/2
+			table.insert(travel_path,{x, y})
+			y = y + width
+			table.insert(travel_path,{x, y})
+	end
+	x = x + length
+	table.insert(travel_path,{x, y})
+	for i = 1,(length/(2*width)), 1 
+		do 
+			y = y - length/2
+			table.insert(travel_path,{x, y})
+			y = y - length/2
+			table.insert(travel_path,{x, y})
+			x = x - width
+			table.insert(travel_path,{x, y})
+			y = y + length/2
+			table.insert(travel_path,{x, y})
+			y = y + length/2
+			table.insert(travel_path,{x, y})
+			x = x - width
+			table.insert(travel_path,{x, y})
+	end
+	y = y - length
+	table.insert(travel_path,{x, y})
 	return travel_path
 end
 
