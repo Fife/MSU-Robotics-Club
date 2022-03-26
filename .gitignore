@@ -4,3 +4,6 @@ booth/current-sim.argos
 booth/current_sim.in
 *.pyc
 booth/current-sim.in
+*.png
+*.out
+submissons/bisectional-output/
