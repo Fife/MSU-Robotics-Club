@@ -96,7 +96,7 @@ function driveTo(x,y, forward_velocity)
 		turnRight(speed_ratio/2)
 		isTurning = false
 	else
-		if a < 20 then
+		if a < 0.2 then
 				driveForward(forward_velocity)		
 		end
 	end
