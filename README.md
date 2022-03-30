@@ -21,10 +21,14 @@ To run experiments in volving gpr:
 <code>
     conda activate gprMax
 </code>
+
 2) Run experiment with the command
 <code>
   argos3 -c submissions/bisectional-scan.argos
 </code>
+
 3) When the experiment loads, open the lua script associated with the experiement, for the above example find "bisectional-scan.lua"
+
 4) Upload the lua script to the simulation window by pressing the gear buttong
+
 5) Press the play button in the simulation window to start the simulation
