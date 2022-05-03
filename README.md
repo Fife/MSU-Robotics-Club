@@ -32,3 +32,5 @@ To run experiments in volving gpr:
 4) Upload the lua script to the simulation window by pressing the gear buttong
 
 5) Press the play button in the simulation window to start the simulation
+
+6) Once simulation has finished, navigate to the output directory and run gprMax on the .out files 
